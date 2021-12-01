@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'rest_framework',
     'records',
+    'artists',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
