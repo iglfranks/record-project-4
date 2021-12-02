@@ -1,0 +1,83 @@
+[
+{
+  "model": "artists.artist",
+  "pk": 1,
+  "fields": {
+    "name": "Bakey",
+    "image": "https://i.ibb.co/Y0Bk52T/bakey-pic.jpg",
+    "social_link": "https://www.instagram.com/bakeymusic/"
+  }
+},
+{
+  "model": "artists.artist",
+  "pk": 2,
+  "fields": {
+    "name": "Interplanetary Criminal",
+    "image": "https://i.ibb.co/fDPq8gB/ic-pic.jpg",
+    "social_link": "https://www.instagram.com/interplanetary_criminal93/"
+  }
+},
+{
+  "model": "artists.artist",
+  "pk": 3,
+  "fields": {
+    "name": "Bailey Ibbs",
+    "image": "https://i.ibb.co/WsCTP6C/ibbs-pic.jpg",
+    "social_link": "https://www.instagram.com/bailey_ibbs/"
+  }
+},
+{
+  "model": "artists.artist",
+  "pk": 4,
+  "fields": {
+    "name": "IZCO",
+    "image": "https://i.ibb.co/LYZVFCX/izco-pic.jpg",
+    "social_link": "https://www.instagram.com/izzycofie/"
+  }
+},
+{
+  "model": "artists.artist",
+  "pk": 5,
+  "fields": {
+    "name": "Coco Bryce",
+    "image": "https://i.ibb.co/q7hcxB4/cococ-pic.jpg",
+    "social_link": "https://www.instagram.com/cocomyor/"
+  }
+},
+{
+  "model": "artists.artist",
+  "pk": 6,
+  "fields": {
+    "name": "Tim Reaper",
+    "image": "https://i.ibb.co/nBBy8Bs/tim-pic.jpg",
+    "social_link": "https://www.instagram.com/futureretrolondon/"
+  }
+},
+{
+  "model": "artists.artist",
+  "pk": 7,
+  "fields": {
+    "name": "Overmono",
+    "image": "https://i.ibb.co/swKK8VL/over-pic.jpg",
+    "social_link": "https://www.instagram.com/overmono/"
+  }
+},
+{
+  "model": "artists.artist",
+  "pk": 8,
+  "fields": {
+    "name": "Nikki Nair",
+    "image": "https://i.ibb.co/sF5HZMP/nikki-pic.jpg",
+    "social_link": "https://www.instagram.com/nikki__nair/"
+  }
+},
+{
+  "model": "artists.artist",
+  "pk": 9,
+  "fields": {
+    "name": "Yosh",
+    "image": "https://i.ibb.co/cc7FKVb/yosh-pic.jpg",
+    "social_link": "https://www.instagram.com/yosh_productions/"
+  }
+}
+]
