@@ -79,5 +79,86 @@
     "image": "https://i.ibb.co/cc7FKVb/yosh-pic.jpg",
     "social_link": "https://www.instagram.com/yosh_productions/"
   }
+},
+{
+  "model": "artists.artist",
+  "pk": 11,
+  "fields": {
+    "name": "DJ Crisps",
+    "image": "https://i.ibb.co/ky0dCT5/crisps-pic.jpg",
+    "social_link": "https://www.instagram.com/djcrisps/"
+  }
+},
+{
+  "model": "artists.artist",
+  "pk": 12,
+  "fields": {
+    "name": "Moktar",
+    "image": "https://i.ibb.co/0s3R6KW/moktar-pic.jpg",
+    "social_link": "https://www.instagram.com/moktarmusic/"
+  }
+},
+{
+  "model": "artists.artist",
+  "pk": 13,
+  "fields": {
+    "name": "Main Phase",
+    "image": "https://i.ibb.co/7RQHtMT/main-phase-pic.jpg",
+    "social_link": "https://www.instagram.com/mainphase93/"
+  }
+},
+{
+  "model": "artists.artist",
+  "pk": 14,
+  "fields": {
+    "name": "Oldboy",
+    "image": "image",
+    "social_link": "link"
+  }
+},
+{
+  "model": "artists.artist",
+  "pk": 15,
+  "fields": {
+    "name": "Daffy",
+    "image": "image",
+    "social_link": "link"
+  }
+},
+{
+  "model": "artists.artist",
+  "pk": 16,
+  "fields": {
+    "name": "Pj Bridger",
+    "image": "image",
+    "social_link": "link"
+  }
+},
+{
+  "model": "artists.artist",
+  "pk": 17,
+  "fields": {
+    "name": "Ollie Rant",
+    "image": "image",
+    "social_link": "link"
+  }
+},
+{
+  "model": "artists.artist",
+  "pk": 18,
+  "fields": {
+    "name": "Alfredo Romero",
+    "image": "image",
+    "social_link": "link"
+  }
+},
+{
+  "model": "artists.artist",
+  "pk": 19,
+  "fields": {
+    "name": "Sully",
+    "image": "image",
+    "social_link": "link"
+  }
 }
 ]

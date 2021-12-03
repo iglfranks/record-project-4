@@ -1,0 +1,169 @@
+[
+{
+  "model": "records.record",
+  "pk": 1,
+  "fields": {
+    "title": "Take It Further",
+    "image": "https://i.ibb.co/jLW1t47/take-it-further-cover.jpg",
+    "release_date": 2020,
+    "label": "Shall Not Fade",
+    "genre": "UKG",
+    "type_of_record": "EP",
+    "is_vinyl_only": false,
+    "link": "https://bakeymusic.bandcamp.com/album/take-it-further-ep",
+    "owner": 1,
+    "artists": [
+      1
+    ]
+  }
+},
+{
+  "model": "records.record",
+  "pk": 2,
+  "fields": {
+    "title": "We Run EP",
+    "image": "https://i.ibb.co/x7MKjZP/we-run-cover.jpg",
+    "release_date": 2021,
+    "label": "Dansu Discs",
+    "genre": "UKG",
+    "type_of_record": "EP",
+    "is_vinyl_only": false,
+    "link": "https://dansudiscsuk.bandcamp.com/track/we-run",
+    "owner": 1,
+    "artists": [
+      3
+    ]
+  }
+},
+{
+  "model": "records.record",
+  "pk": 3,
+  "fields": {
+    "title": "Darkside EP",
+    "image": "https://i.ibb.co/qRWmNmv/darkside-pic.jpg",
+    "release_date": 2020,
+    "label": "Shall Not Fade",
+    "genre": "UKG",
+    "type_of_record": "EP",
+    "is_vinyl_only": false,
+    "link": "https://interplanetarycriminal.bandcamp.com/album/darkside-ep",
+    "owner": 1,
+    "artists": [
+      2
+    ]
+  }
+},
+{
+  "model": "records.record",
+  "pk": 4,
+  "fields": {
+    "title": "Spezial Series Vol 2",
+    "image": "https://ibb.co/PFc8hPD",
+    "release_date": 2021,
+    "label": "GLBDOM",
+    "genre": "Breaks",
+    "type_of_record": "V/A",
+    "is_vinyl_only": false,
+    "link": "https://glbdomrec.bandcamp.com/track/a5-oldboy-owner-of-a-lonely-dub",
+    "owner": 1,
+    "artists": [
+      14,
+      15,
+      16,
+      17,
+      18
+    ]
+  }
+},
+{
+  "model": "records.record",
+  "pk": 5,
+  "fields": {
+    "title": "Meeting of the Minds Vol. 7",
+    "image": "https://i.ibb.co/h2wxFdm/meeting-minds-7.jpg",
+    "release_date": 2021,
+    "label": "Future Retro London",
+    "genre": "Jungle",
+    "type_of_record": "EP",
+    "is_vinyl_only": true,
+    "link": "https://futureretrolondon.bandcamp.com/album/meeting-of-the-minds-vol-7",
+    "owner": 1,
+    "artists": [
+      19,
+      6
+    ]
+  }
+},
+{
+  "model": "records.record",
+  "pk": 6,
+  "fields": {
+    "title": "Shufflin'",
+    "image": "https://i.ibb.co/P92Jv65/shufflin-pic.jpg",
+    "release_date": 2021,
+    "label": "Lobster Theremin",
+    "genre": "Breaks",
+    "type_of_record": "EP",
+    "is_vinyl_only": false,
+    "link": "https://nikkinair.bandcamp.com/album/shufflin",
+    "owner": 1,
+    "artists": [
+      8
+    ]
+  }
+},
+{
+  "model": "records.record",
+  "pk": 7,
+  "fields": {
+    "title": "BMW Track / So U Kno",
+    "image": "https://i.ibb.co/QKFKcZB/so-u-kno-pic.jpg",
+    "release_date": 2021,
+    "label": "Poly Kicks",
+    "genre": "Breaks",
+    "type_of_record": "single",
+    "is_vinyl_only": false,
+    "link": "https://overmono.bandcamp.com/album/bmw-track-so-u-kno",
+    "owner": 1,
+    "artists": [
+      7
+    ]
+  }
+},
+{
+  "model": "records.record",
+  "pk": 8,
+  "fields": {
+    "title": "Lemon EP",
+    "image": "https://i.ibb.co/rGHk8hY/lemon-pic.jpg",
+    "release_date": 2021,
+    "label": "Steel City Dance Discs",
+    "genre": "Breaks",
+    "type_of_record": "EP",
+    "is_vinyl_only": false,
+    "link": "https://steelcitydancediscs.bandcamp.com/track/lemon-3",
+    "owner": 1,
+    "artists": [
+      12
+    ]
+  }
+},
+{
+  "model": "records.record",
+  "pk": 9,
+  "fields": {
+    "title": "Don't Say EP",
+    "image": "https://i.ibb.co/CbzrjR8/dontsay-pic.jpg",
+    "release_date": 2021,
+    "label": "Lobster Theremin",
+    "genre": "Breaks",
+    "type_of_record": "EP",
+    "is_vinyl_only": false,
+    "link": "https://lobstertheremin.com/album/don-t-say-ep",
+    "owner": 1,
+    "artists": [
+      9
+    ]
+  }
+}
+]

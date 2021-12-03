@@ -1,4 +1,6 @@
 from rest_framework import serializers
+# from records.models import Record
+
 
 # from records.serializers import RecordSerializer
 from .models import Artist
@@ -9,4 +11,10 @@ class ArtistSerializer(serializers.ModelSerializer):
     fields = '__all__'
     # fields = ('name', )
 
-  # record_set = RecordSerializer(read_only=True, many=True)
+  
+
+from records.single_serializer import NewRecordSerializer
+
+class PopulatedArtistSerializer(ArtistSerializer):
+
+  record_set = NewRecordSerializer(read_only=True, many=True)
