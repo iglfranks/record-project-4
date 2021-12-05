@@ -3,6 +3,7 @@ import axios from 'axios'
 import { BrowserRouter, Switch, Route } from 'react-router-dom'
 import Home from './components/Home'
 import RecordIndex from './components/RecordIndex'
+import Navbar from './components/Navbar'
 
 const App = () => {
 
@@ -18,6 +19,7 @@ const App = () => {
   // <h1>Hello World</h1>
 
     <BrowserRouter>
+      <Navbar />
       <Switch>
         <Route exact path='/' component={Home}/>
         <Route exact path='/records' component={RecordIndex}/>
