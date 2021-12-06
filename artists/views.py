@@ -11,7 +11,7 @@ from rest_framework.permissions import IsAuthenticatedOrReadOnly
 class ArtistDetailView(APIView):
   def get(self, request, pk):
     artist = Artist.objects.get(id=pk)
-    serialized_artist = ArtistSerializer(artist)
+    serialized_artist = PopulatedArtistSerializer(artist)
     return Response(serialized_artist.data, status=status.HTTP_200_OK)
 
 

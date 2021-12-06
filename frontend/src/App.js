@@ -5,6 +5,10 @@ import Home from './components/Home'
 import RecordIndex from './components/RecordIndex'
 import Navbar from './components/Navbar'
 import SingleRecord from './components/SingleRecord'
+import Register from './components/Register'
+import Login from './components/Login'
+import ArtistIndex from './components/ArtistIndex'
+import SingleArtist from './components/SingleArtist'
 
 const App = () => {
 
@@ -25,6 +29,10 @@ const App = () => {
         <Route exact path='/' component={Home}/>
         <Route exact path='/records' component={RecordIndex}/>
         <Route exact path='/records/:id' component={SingleRecord}/>
+        <Route exact path='/register' component={Register}/>
+        <Route exact path='/login' component={Login}/>
+        <Route exact path='/artists' component={ArtistIndex}/>
+        <Route exact path='/artists/:id' component={SingleArtist}/>
       </Switch>
     </BrowserRouter>
   )
