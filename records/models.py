@@ -3,7 +3,7 @@ from django.db import models
 class Record(models.Model):
 
   RECORD_TYPES = (
-    ('single', 'Single Release'),
+    ('Single', 'Single Release'),
     ('EP', 'Extended Project'),
     ('LP', 'Long Play'),
     ('V/A', 'Artist Compilation')

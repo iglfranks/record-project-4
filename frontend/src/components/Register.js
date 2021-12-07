@@ -32,6 +32,7 @@ const Register = () => {
     setFormData(newFormData)
   }
 
+
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
@@ -111,6 +112,15 @@ const Register = () => {
             placeholder='Last Name' 
             onChange={handleChange} 
             value={formData.last_name}/>
+        </Form.Group>
+
+        <Form.Group>
+          <Form.Label>Profile Picture</Form.Label>
+          <Form.Control 
+            name='profile_pic' 
+            type='file' 
+            onChange={handleChange} 
+            value={formData.profile_pic}/>
         </Form.Group>
 
         <button type='submit' className='btn btn-primary'>Submit</button>

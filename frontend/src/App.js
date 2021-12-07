@@ -9,6 +9,8 @@ import Register from './components/Register'
 import Login from './components/Login'
 import ArtistIndex from './components/ArtistIndex'
 import SingleArtist from './components/SingleArtist'
+import Profile from './components/Profile'
+import AddRecord from './components/AddRecord'
 
 const App = () => {
 
@@ -33,6 +35,8 @@ const App = () => {
         <Route exact path='/login' component={Login}/>
         <Route exact path='/artists' component={ArtistIndex}/>
         <Route exact path='/artists/:id' component={SingleArtist}/>
+        <Route exact path='/profile' component={Profile}/>
+        <Route exact path='/addrecord' component={AddRecord}/>
       </Switch>
     </BrowserRouter>
   )

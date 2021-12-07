@@ -5,7 +5,7 @@ from django.contrib.auth import get_user_model
 from django.conf import settings
 from rest_framework import status
 import jwt
-from .serializers import UserSerializer
+from .serializers import PopulatedUserSerializer, UserSerializer
 User = get_user_model()
 
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
@@ -72,8 +72,13 @@ class ProfileDetailView(APIView):
     except User.DoesNotExist():
       raise PermissionDenied({'message': 'Invalid credentials'})
 
-    serialized_user = UserSerializer(user)
+    serialized_user = PopulatedUserSerializer(user)
     return Response(serialized_user.data, status=200)
+
+  # def get(self, request):
+  #   user = User.objects.get()
+  #   serialized_user = PopulatedUserSerializer(user, many=True)
+  #   return Response(serialized_user.data, status=200)
 
   def put(self, request, pk):
     user = User.objects.get(id=pk)

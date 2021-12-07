@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router'
-import { Col, Row, Container, Figure } from 'react-bootstrap'
+import { Col, Row, Container, Figure, Card } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
 
 
 
@@ -72,43 +73,38 @@ const SingleArtist = () => {
 
             </Row>
 
-            <Row lg={6}>
-              {artistRecords ?
-              // {artistRecords.map(art => {
-              //   console.log(art)
-              //   return (
-              //     <Col key={art.title}>
-              //       <Card>
-              //         <Figure>
-              //           <Figure.Image
-              //             src={art.image}
-              //             // alt={`${record.title} Pic`}
-              //             id='record-single-pic'
-              //           />
-              //         </Figure>
-              //       </Card>
 
-              //     </Col>
-              //   )
-              // })}
+            {artistRecords ?
+              <Row lg={6}>
 
-                <Col>
-                  <Figure>
-                    <Figure.Image
-                      src={artistRecords.image}
-                      // alt={`${record.title} Pic`}
-                      id='record-single-pic'
-                    />
-                  </Figure>
-                </Col>
-                :
-                <>
-                  <h1>error</h1> : <h1>Loading</h1>
-                </>
-              }
+                {artistRecords.map(art => {
+                  return (
+                    <Col key={art.title}>
+
+                      <Card>
+                        <Link to={`/records/${art.id}`}>
+                          <Figure>
+                            <Figure.Image
+                              src={art.image}
+                              alt={`${art.title} Cover`}
+                              id='record-single-pic'
+                            />
+                          </Figure>
+                        </Link>
+                      </Card>
+
+                    </Col>
+                  )
+                })}
+              </Row>
+              :
+              <Row>
+                <h1>error</h1> : <h1>Loading</h1>
+              </Row>
+            }
 
 
-            </Row>
+
 
           </Container>
         </>

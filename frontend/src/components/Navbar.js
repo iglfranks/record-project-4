@@ -1,8 +1,34 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useEffect } from 'react'
+import { Link, useLocation, useHistory } from 'react-router-dom'
+import { getPayload } from './helpers/auth'
+
 
 const Navbar = () => {
 
+  const location = useLocation()
+  const history = useHistory()
+
+  useEffect(() => {
+
+  }, [location.pathname])
+
+  const userIsAuthenticated = () => {
+    const payload = getPayload()
+    console.log('->>>> PAYLOAD', payload)
+    if (!payload) return false
+    // const now = Math.round(Date.now() / 1000)
+    // console.log(payload.exp)
+    // console.log('now ->>>', now)
+    // return now < payload.exp
+    return true
+  }
+
+  const handleLogout = () => {
+    window.localStorage.removeItem('token')
+    history.push('/')
+  }
+
+  console.log(userIsAuthenticated())
   return (
     // <div className='container-fluid'>
     <nav className='navbar navbar-dark bg-dark navbar-expand-lg sticky-top'>
@@ -18,8 +44,25 @@ const Navbar = () => {
             <Link to='/artists' className='nav-link'>Artists</Link>
           </div>
           <div className='navbar-nav navbar-text'>
-            <Link to='/register' className='nav-link'>Register</Link>
-            <Link to='/login' className='nav-link'>Login</Link>
+            {/* <Link to='/register' className='nav-link'>Register</Link>
+            <Link to='/login' className='nav-link'>Login</Link> */}
+
+            {!userIsAuthenticated() ?
+              <>
+                <Link to='/register' className='nav-link'>Register</Link>
+                <Link to='/login' className='nav-link'>Login</Link>
+              </>
+              :
+              <>
+                <Link to='/profile' className='nav-link'>Profile</Link>
+                <Link to='/addrecord' className='nav-link btn btn-primary text-white'>Add A Record</Link>
+                
+                <button className='btn btn-primary' onClick={handleLogout}>Logout</button>
+              </>
+            
+          
+            }
+
           </div>
         </div>
       </div>

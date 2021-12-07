@@ -8,10 +8,11 @@ from .serializers import RecordSerializer, PopulatedRecordSerializer
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
 class RecordListView(APIView):
-  # permission_classes = (IsAuthenticatedOrReadOnly, )
+  permission_classes = (IsAuthenticatedOrReadOnly, )
 
   def post(self, request):
-    request.data['owner'] = request.data.id
+    request.data['owner'] = request.user.id
+    print('->>>>>>', request.data)
     record = RecordSerializer(data = request.data)
     if record.is_valid():
       record.save()

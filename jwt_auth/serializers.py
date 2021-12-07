@@ -3,6 +3,8 @@ from django.contrib.auth import get_user_model
 import django.contrib.auth.password_validation as validations
 from django.contrib.auth.hashers import make_password
 from django.core.exceptions import ValidationError
+
+from reviews.serializers import ReviewSerializer
 User = get_user_model()
 
 class UserSerializer(serializers.ModelSerializer):
@@ -30,3 +32,12 @@ class UserSerializer(serializers.ModelSerializer):
         model = User
         # fields = ('username', 'email', 'password', 'password_confirmation',)
         fields = '__all__'
+
+    
+
+class PopulatedUserSerializer(UserSerializer):
+
+  reviews_set = ReviewSerializer(read_only=True, many=True)
+
+
+# ^^^^^^^^^^^^^^^ for trying to make reviews appear opn user
