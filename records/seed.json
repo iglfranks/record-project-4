@@ -11,6 +11,7 @@
     "type_of_record": "EP",
     "is_vinyl_only": false,
     "link": "https://bakeymusic.bandcamp.com/album/take-it-further-ep",
+    "soundcloud_link": "link",
     "owner": 1,
     "artists": [
       1
@@ -29,6 +30,7 @@
     "type_of_record": "EP",
     "is_vinyl_only": false,
     "link": "https://dansudiscsuk.bandcamp.com/track/we-run",
+    "soundcloud_link": "link",
     "owner": 1,
     "artists": [
       3
@@ -47,6 +49,7 @@
     "type_of_record": "EP",
     "is_vinyl_only": false,
     "link": "https://interplanetarycriminal.bandcamp.com/album/darkside-ep",
+    "soundcloud_link": "link",
     "owner": 1,
     "artists": [
       2
@@ -58,13 +61,14 @@
   "pk": 4,
   "fields": {
     "title": "Spezial Series Vol 2",
-    "image": "https://ibb.co/PFc8hPD",
+    "image": "https://i.ibb.co/HB5qwhV/glb-pic.jpg",
     "release_date": 2021,
     "label": "GLBDOM",
     "genre": "Breaks",
     "type_of_record": "V/A",
     "is_vinyl_only": false,
     "link": "https://glbdomrec.bandcamp.com/track/a5-oldboy-owner-of-a-lonely-dub",
+    "soundcloud_link": "link",
     "owner": 1,
     "artists": [
       14,
@@ -87,6 +91,7 @@
     "type_of_record": "EP",
     "is_vinyl_only": true,
     "link": "https://futureretrolondon.bandcamp.com/album/meeting-of-the-minds-vol-7",
+    "soundcloud_link": "link",
     "owner": 1,
     "artists": [
       19,
@@ -106,6 +111,7 @@
     "type_of_record": "EP",
     "is_vinyl_only": false,
     "link": "https://nikkinair.bandcamp.com/album/shufflin",
+    "soundcloud_link": "link",
     "owner": 1,
     "artists": [
       8
@@ -124,6 +130,7 @@
     "type_of_record": "single",
     "is_vinyl_only": false,
     "link": "https://overmono.bandcamp.com/album/bmw-track-so-u-kno",
+    "soundcloud_link": "link",
     "owner": 1,
     "artists": [
       7
@@ -142,6 +149,7 @@
     "type_of_record": "EP",
     "is_vinyl_only": false,
     "link": "https://steelcitydancediscs.bandcamp.com/track/lemon-3",
+    "soundcloud_link": "link",
     "owner": 1,
     "artists": [
       12
@@ -160,9 +168,29 @@
     "type_of_record": "EP",
     "is_vinyl_only": false,
     "link": "https://lobstertheremin.com/album/don-t-say-ep",
+    "soundcloud_link": "link",
     "owner": 1,
     "artists": [
       9
+    ]
+  }
+},
+{
+  "model": "records.record",
+  "pk": 10,
+  "fields": {
+    "title": "Bring It Back EP",
+    "image": "https://i.ibb.co/Bz1YLXf/bring-it-back.jpg",
+    "release_date": 2021,
+    "label": "Shall Not Fade",
+    "genre": "Breaks",
+    "type_of_record": "EP",
+    "is_vinyl_only": false,
+    "link": "link",
+    "soundcloud_link": "link",
+    "owner": 1,
+    "artists": [
+      1
     ]
   }
 }

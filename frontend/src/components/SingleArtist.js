@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams } from 'react-router'
-import { Col, Row, Container, Figure, Card } from 'react-bootstrap'
+import { Col, Row, Container, Figure, Card, OverlayTrigger, Tooltip } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 
 
@@ -80,18 +80,25 @@ const SingleArtist = () => {
                 {artistRecords.map(art => {
                   return (
                     <Col key={art.title}>
-
-                      <Card>
-                        <Link to={`/records/${art.id}`}>
-                          <Figure>
-                            <Figure.Image
-                              src={art.image}
-                              alt={`${art.title} Cover`}
-                              id='record-single-pic'
-                            />
-                          </Figure>
-                        </Link>
-                      </Card>
+                      <OverlayTrigger
+                        placement='top'
+                        overlay={
+                          <Tooltip>{art.title}</Tooltip>
+                        }
+                      >
+                        <Card>
+                          <Link to={`/records/${art.id}`}>
+                            <Figure style={{ margin: '0' }}>
+                              <Figure.Image
+                                src={art.image}
+                                alt={`${art.title} Cover`}
+                                id='record-single-pic'
+                                style={{ margin: '0' }}
+                              />
+                            </Figure>
+                          </Link>
+                        </Card>
+                      </OverlayTrigger>
 
                     </Col>
                   )

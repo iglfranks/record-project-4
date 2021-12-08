@@ -57,7 +57,7 @@ const Home = () => {
         <div>
           {theFewRecords !== [] ?
             <>
-              <Carousel id='home-carousel' variant="dark">
+              <Carousel id='home-carousel' variant="dark" pause='hover'>
                 {theFewRecords.map(rec => {
                   return (
                     <Carousel.Item className='carousel-item' key={rec.id} style={{

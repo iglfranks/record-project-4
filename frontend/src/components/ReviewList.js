@@ -2,6 +2,7 @@
 import React, { useEffect, useState } from 'react'
 import { Button, Card } from 'react-bootstrap'
 import { getPayload } from './helpers/auth'
+import axios from 'axios'
 
 const ReviewList = ({ id, owner, rating, comment }) => {
 
@@ -18,14 +19,21 @@ const ReviewList = ({ id, owner, rating, comment }) => {
     
   }, [])
 
-  const handleDel = async () => {
-
+  const handleDel = async (event) => {
+    try {
+      axios.delete(
+        `/api/reviews/${event.target.id}`
+      )
+      window.location.reload()
+    } catch (err) {
+      console.log(err)
+    }
   }
 
   console.log(userPayload)
   return (
     <>
-      <Card.Header id={id} style={{
+      <Card.Header style={{
         display: 'flex',
         justifyContent: 'space-between',
       }}>
@@ -33,7 +41,7 @@ const ReviewList = ({ id, owner, rating, comment }) => {
           {owner.username}
         </div>
         <div>
-          {owner.id === userPayload ? <Button onClick={handleDel}>X</Button> : <div></div>}
+          {owner.id === userPayload ? <Button id={id} onClick={handleDel}>X</Button> : <div></div>}
         </div>
       </Card.Header>
       <Card.Body>

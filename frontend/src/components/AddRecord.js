@@ -22,6 +22,7 @@ const AddRecord = () => {
     type_of_record: '',
     is_vinyl_only: false,
     link: '',
+    soundcloud_link: '',
     artists: [],
   })
 
@@ -34,6 +35,7 @@ const AddRecord = () => {
     type_of_record: '',
     is_vinyl_only: '',
     link: '',
+    soundcloud_link: '',
     artists: '',
   })
 
@@ -211,6 +213,16 @@ const AddRecord = () => {
             name='link'
             placeholder='Link'
             value={formData.link}
+            onChange={handleChange} />
+        </Form.Group>
+
+        <Form.Group>
+          <Form.Label>Soundcloud Link</Form.Label>
+          <Form.Control
+            className={`${errors.soundcloud_link ? 'border-danger' : ''}`}
+            name='soundcloud_link'
+            placeholder='Upload the full previews or just 1 song'
+            value={formData.soundcloud_link}
             onChange={handleChange} />
         </Form.Group>
 

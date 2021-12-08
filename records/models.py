@@ -28,6 +28,7 @@ class Record(models.Model):
   type_of_record = models.CharField(max_length=100, choices=RECORD_TYPES, default=None)
   is_vinyl_only = models.BooleanField(default=None)
   link = models.CharField(max_length=200, default=None)
+  soundcloud_link = models.CharField(max_length=300, default=None)
   artists = models.ManyToManyField("artists.Artist")
   owner = models.ForeignKey(
     "jwt_auth.User",

@@ -2,8 +2,9 @@ import axios from 'axios'
 import React, { useEffect, useState } from 'react'
 import { useParams } from 'react-router'
 import { Link } from 'react-router-dom'
+import ReactPlayer from 'react-player'
 
-import { Col, Row, Container, Figure, Card } from 'react-bootstrap'
+import { Col, Row, Container, Figure, Card, OverlayTrigger, Tooltip } from 'react-bootstrap'
 import AddReviewForm from './formsAndButtons/AddReviewForm'
 import ReviewList from './ReviewList'
 import AddToFave from './formsAndButtons/AddToFave'
@@ -62,6 +63,8 @@ const SingleRecord = () => {
 
   }, [record])
 
+  // const renderToolTip = () 
+
   console.log(hasError)
   // console.log(recordTypeInfo)
   // console.log(reviews)
@@ -119,6 +122,13 @@ const SingleRecord = () => {
               </Row>
             </Col>
 
+            <Col>
+              <ReactPlayer
+                url={record.soundcloud_link}
+                height='200px'
+              />
+            </Col>
+
           </Row>
         </Col>
       </Row>
@@ -128,17 +138,25 @@ const SingleRecord = () => {
             {artists.map(art => {
               return (
                 <Col key={art.id}>
-                  <Card>
-                    <Link to={`/artists/${art.id}`}>
-                      <Figure>
-                        <Figure.Image
-                          src={art.image}
-                          alt={`${art.name} Profile Pic`}
-                          id='record-single-pic'
-                        />
-                      </Figure>
-                    </Link>
-                  </Card>
+                  <OverlayTrigger
+                    placement='top'
+                    overlay={
+                      <Tooltip>{art.name}</Tooltip>
+                    }
+                  >
+                    <Card>
+                      <Link to={`/artists/${art.id}`}>
+                        <Figure style={{ margin: '0' }}>
+                          <Figure.Image
+                            src={art.image}
+                            alt={`${art.name} Profile Pic`}
+                            id='record-single-pic'
+                            style={{ margin: '0' }}
+                          />
+                        </Figure>
+                      </Link>
+                    </Card>
+                  </OverlayTrigger>
                 </Col>
               )
             })}
@@ -176,6 +194,7 @@ const SingleRecord = () => {
           </Col>
 
         </Row>
+      
       </Container>
 
     </Container>
