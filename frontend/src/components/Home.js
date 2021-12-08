@@ -1,32 +1,46 @@
 /* eslint-disable no-unused-vars */
 import React, { useState, useEffect } from 'react'
-import { Carousel } from 'react-bootstrap'
+import { Carousel, Row } from 'react-bootstrap'
 import axios from 'axios'
-import { Link } from 'react-router-dom'
+import HomeCarousel from './HomeCarousel'
 
 const Home = () => {
 
-  // const [carouselItems, setCarouselItems] = useState()
   const [records, setRecords] = useState([])
   const [hasError, setHasError] = useState(false)
+
+  const fewRecords = []
+  const [theFewRecords, setTheFewRecords] = useState([])
+  
 
   useEffect(() => {
     const getData = async () => {
       try {
         const { data } = await axios.get('/api/records')
         setRecords(data)
-        // console.log(records)
       } catch (err) {
         console.log(err)
         setHasError(true)
-        // console.log(hasError)
       }
-
     }
     getData()
   }, [])
 
+  useEffect(() => {
+    let item
+    const set = () => {
+      for (let i = 0; i < 6; i++) {
+        item = records[i]
+        if (!item) return 
+        fewRecords.push(item)
+      }
+      setTheFewRecords(fewRecords)
+    }
+    set()
+  }, [records])
+
   console.log(records)
+  console.log(theFewRecords)
   return (
     <>
       <section className='home-hero'>
@@ -40,30 +54,34 @@ const Home = () => {
         </div>
       </section>
       <section>
-        <Carousel id='home-carousel' variant="dark">
+        <div>
+          {theFewRecords !== [] ?
+            <>
+              <Carousel id='home-carousel' variant="dark">
+                {theFewRecords.map(rec => {
+                  return (
+                    <Carousel.Item className='carousel-item' key={rec.id} style={{
+                      textAlign: 'center',
+                      backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(${rec.image})`,
+                      backgroundRepeat: 'no-repeat',
+                      backgroundPosition: 'cover',
+                      paddingTop: '30px',
+                    }}>
+                      <HomeCarousel {...rec}/>
+                    </Carousel.Item>
+                  )
+                })}
+              </Carousel>
+            </>
 
-          {records.map(rec => {
-            return (
-
-              <Carousel.Item className='carousel-item' key={rec.id} style={{
-                textAlign: 'center',
-                backgroundImage: `${rec.image}`,
-                backgroundPosition: 'cover',
-              }}>
-                <Link to={`/records/${rec.id}`} >
-                  <img
-                    src={rec.image}
-                    alt={`${rec.title} Cover Art`}
-                    className='carousel-item-pic'
-                  />
-                  <Carousel.Caption>{rec.title}</Carousel.Caption>
-                </Link>
-              </Carousel.Item>
-
-            )
-          })}
-
-        </Carousel>
+            :
+            
+            <Row>
+              <h1>test</h1>
+            </Row>
+          }
+        </div>
+        
       </section>
     </>
   )

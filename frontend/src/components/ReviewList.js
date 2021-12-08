@@ -1,9 +1,9 @@
 
 import React, { useEffect, useState } from 'react'
-import { Card } from 'react-bootstrap'
+import { Button, Card } from 'react-bootstrap'
 import { getPayload } from './helpers/auth'
 
-const ReviewList = ({ owner, rating, comment }) => {
+const ReviewList = ({ id, owner, rating, comment }) => {
 
   const [userPayload, setUserPayload] = useState()
 
@@ -18,10 +18,14 @@ const ReviewList = ({ owner, rating, comment }) => {
     
   }, [])
 
+  const handleDel = async () => {
+
+  }
+
   console.log(userPayload)
   return (
     <>
-      <Card.Header style={{
+      <Card.Header id={id} style={{
         display: 'flex',
         justifyContent: 'space-between',
       }}>
@@ -29,7 +33,7 @@ const ReviewList = ({ owner, rating, comment }) => {
           {owner.username}
         </div>
         <div>
-          {owner.id === userPayload ? <button>X</button> : <div></div>}
+          {owner.id === userPayload ? <Button onClick={handleDel}>X</Button> : <div></div>}
         </div>
       </Card.Header>
       <Card.Body>

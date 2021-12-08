@@ -16,10 +16,6 @@ const Navbar = () => {
     const payload = getPayload()
     console.log('->>>> PAYLOAD', payload)
     if (!payload) return false
-    // const now = Math.round(Date.now() / 1000)
-    // console.log(payload.exp)
-    // console.log('now ->>>', now)
-    // return now < payload.exp
     return true
   }
 

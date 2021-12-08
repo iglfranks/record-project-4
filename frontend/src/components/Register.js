@@ -1,6 +1,7 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { Container, Form } from 'react-bootstrap'
+import ImageUploadField from './ImageUploadField'
 
 
 
@@ -44,8 +45,12 @@ const Register = () => {
     }
   }
 
+  const handleImageUrl = (url) => {
+    setFormData({ ...formData, image: url })
+  }
 
-  // console.log(errors.username)
+
+  console.log(formData)
   return (
     <Container id='form-container'>
       <Form onSubmit={handleSubmit}>
@@ -116,11 +121,11 @@ const Register = () => {
 
         <Form.Group>
           <Form.Label>Profile Picture</Form.Label>
-          <Form.Control 
-            name='profile_pic' 
-            type='file' 
-            onChange={handleChange} 
-            value={formData.profile_pic}/>
+          <ImageUploadField 
+            value={formData.profile_pic}
+            name='profile_pic'
+            handleImageUrl={handleImageUrl}
+          />
         </Form.Group>
 
         <button type='submit' className='btn btn-primary'>Submit</button>

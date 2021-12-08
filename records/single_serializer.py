@@ -4,4 +4,4 @@ from .models import Record
 class NewRecordSerializer(serializers.ModelSerializer):
   class Meta:
     model = Record
-    fields = ('title', 'image', 'id', )
+    fields = ('title', 'image', 'id', 'artists' )

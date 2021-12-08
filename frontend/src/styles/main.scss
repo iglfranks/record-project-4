@@ -13,6 +13,7 @@
 #record-single-pic {
   border: 5px;
   border-color: black;
+  // filter: blur(0px);
 }
 
 #form-container {
@@ -33,6 +34,6 @@
   height: 50vh;
   background-position: center;
   background-size: cover;
-  backdrop-filter: blur(5px);
+  // backdrop-filter: blur(8px);
   // filter: blur(8px);
 }

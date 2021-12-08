@@ -6,7 +6,7 @@ from .models import Favourite
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
-from .serializers import FavouriteSerializer
+from .serializers import FavouriteSerializer, PopulatedFavouriteSerializer
 
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
@@ -16,7 +16,7 @@ class FavouriteListView(APIView):
 
   def get(self,request):
         faves = Favourite.objects.all()
-        serialized_faves = FavouriteSerializer(faves, many=True)
+        serialized_faves = PopulatedFavouriteSerializer(faves, many=True)
         return Response(serialized_faves.data, status=status.HTTP_200_OK)
 
   def post(self, request):
@@ -34,7 +34,7 @@ class FavouriteDetailView(APIView):
 
   def get(self, request, pk):
         fave = Favourite.objects.get(id=pk)
-        serialized_fave = FavouriteSerializer(fave)
+        serialized_fave = PopulatedFavouriteSerializer(fave)
         return Response(serialized_fave.data, status=status.HTTP_200_OK)
 
   def delete(self, request, pk):
