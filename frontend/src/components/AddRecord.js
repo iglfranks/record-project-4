@@ -1,12 +1,17 @@
 import React, { useState, useEffect } from 'react'
-import { Container, Form } from 'react-bootstrap'
+import { Button, Container, Form, Modal } from 'react-bootstrap'
 import axios from 'axios'
+import Select from 'react-select'
+import ImageUploadField from './ImageUploadField'
+import AddArtistForm from './formsAndButtons/AddArtistForm'
 
 const AddRecord = () => {
 
   const [artistsList, setArtistsList] = useState([])
   const [hasError, setHasError] = useState(false)
-  const [artistArray, setArtistArray] = useState([])
+  const [show, setShow] = useState(false)
+
+  const [selectOptions, setSelectOptions] = useState([])
 
   const [formData, setFormData] = useState({
     title: '',
@@ -15,9 +20,9 @@ const AddRecord = () => {
     label: '',
     genre: '',
     type_of_record: '',
-    is_vinyl_only: true,
+    is_vinyl_only: false,
     link: '',
-    artists: `${artistArray}`,
+    artists: [],
   })
 
   const [errors, setErrors] = useState({
@@ -46,19 +51,31 @@ const AddRecord = () => {
     getArtistList()
   }, [])
 
-  const handleChange = (event) => {
-    const newFormData = { ...formData, [event.target.name]: event.target.value }
-    // console.log(newFormData)
-    setFormData(newFormData)
+  useEffect(() => {
+    const options = artistsList.map(art => {
+      return (
+        { value: `${art.id}`, label: `${art.name}` }
+      )
+    })
+    setSelectOptions(options)
+  }, [artistsList])
+
+  const artistSelect = (selected, name) => {
+    console.log(name)
+    console.log(selected)
+
+    const values = selected ? selected.map(item => parseInt(item.value)) : []
+    setFormData({ ...formData, [name]: [...values] })
   }
 
-  const artistSelect = (event) => {
-    const art = parseInt(event.target.value)
-    const newArtist = [ ...artistArray, art ]
-    setArtistArray(newArtist)
-    const newFormData = { ...formData, [event.target.name]: newArtist }
+  const handleImageUrl = (url) => {
+    setFormData({ ...formData, image: url })
+  }
+
+  const handleChange = (event) => {
+    const value = event.target.type === 'checkbox' ? event.target.checked : event.target.value
+    const newFormData = { ...formData, [event.target.name]: value }
     setFormData(newFormData)
-    console.log(formData)
   }
 
   const handleSubmit = async (event) => {
@@ -72,10 +89,11 @@ const AddRecord = () => {
     }
   }
 
-  console.log(hasError)
-  // console.log(artistsList)
+  const handleShow = () => setShow(true)
+  const handleClose = () => setShow(false)
+
+  console.log('has error->>>>', hasError)
   console.log(formData)
-  // console.log(errors)
   return (
     <Container>
       <Form onSubmit={handleSubmit}>
@@ -91,13 +109,12 @@ const AddRecord = () => {
         </Form.Group>
 
         <Form.Group>
-          <Form.Label>Cover Art</Form.Label>
-          <Form.Control
-            className={`${errors.image ? 'border-danger' : ''}`}
+          <Form.Label>Profile Picture</Form.Label>
+          <ImageUploadField 
+            value={formData.image}
             name='image'
-            type='file'
-            onChange={handleChange}
-            value={formData.image} />
+            handleImageUrl={handleImageUrl}
+          />
         </Form.Group>
 
         <Form.Group>
@@ -128,6 +145,7 @@ const AddRecord = () => {
             value={formData.type_of_record}
             onChange={handleChange}
           >
+            <option>Type of record</option>
             <option>EP</option>
             <option>LP</option>
             <option>Single</option>
@@ -140,9 +158,11 @@ const AddRecord = () => {
           <Form.Select
             className={`${errors.genre ? 'border-danger' : ''}`}
             name='genre'
+            placeholder='genre'
             value={formData.genre}
             onChange={handleChange}
           >
+            <option>Genre</option>
             <option>UKG</option>
             <option>Breaks</option>
             <option>Jungle</option>
@@ -159,43 +179,30 @@ const AddRecord = () => {
           <Form.Check
             name='is_vinyl_only'
             type='checkbox'
-            value={formData.is_vinyl_only}
+            checked={formData.is_vinyl_only}
             onChange={handleChange}
           />
         </Form.Group>
+        <div>
+          <Form.Group>
+            <Form.Label>Artists</Form.Label>
+            <Select
+              name='artists'
+              onChange={(selected) => artistSelect(selected, 'artists')}
+              options={selectOptions}
+              isMulti
+            />
+          </Form.Group>
+          <Button variant='primary' onClick={handleShow}>
+            Add Artist
+          </Button>
 
-        <Form.Group>
-          <Form.Label>Artists</Form.Label>
-          <Form.Select
-            name='artists'
-            multiple={true}
-            value={formData.artists}
-            onChange={artistSelect}
-          >
-            {artistsList.map(art => {
-              return (
-                <option key={art.id} value={art.id}>{art.name}</option>
-              )
-            })}
-          </Form.Select>
-        </Form.Group>
-
-        {/* <Form.Group>
-          <Form.Label>Artists</Form.Label>
-          <Form.Select
-            name='artists'
-            // value={formData.artists}
-            // onChange={handleChange}
-            className='selectpicker'
-            multiple={true}
-          >
-            <option>test</option>
-            <option>test2</option>
-
-          </Form.Select>
-        </Form.Group> */}
-
-            
+          <Modal show={show} onHide={handleClose}>
+            <AddArtistForm 
+              handleClose={handleClose}
+            />
+          </Modal>
+        </div>
 
         <Form.Group>
           <Form.Label>Purchase Link</Form.Label>

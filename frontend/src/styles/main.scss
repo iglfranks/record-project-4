@@ -22,3 +22,17 @@
 #button-div {
   padding-left: 40px;
 }
+
+#home-carousel {
+  background-size: cover;
+  // background-position: center;
+  height: 50vh;
+}
+
+.carousel-item {
+  height: 50vh;
+  background-position: center;
+  background-size: cover;
+  backdrop-filter: blur(5px);
+  // filter: blur(8px);
+}

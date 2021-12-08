@@ -12,7 +12,6 @@ class RecordListView(APIView):
 
   def post(self, request):
     request.data['owner'] = request.user.id
-    print('->>>>>>', request.data)
     record = RecordSerializer(data = request.data)
     if record.is_valid():
       record.save()

@@ -21,7 +21,7 @@ class Record(models.Model):
   )
 
   title = models.CharField(max_length=100, default=None)
-  image = models.CharField(max_length=100, default=None)
+  image = models.CharField(max_length=700, default=None)
   release_date = models.IntegerField(default=None)
   label = models.CharField(max_length=100, default=None)
   genre = models.CharField(max_length=100, choices=RECORD_GENRES, default=None)
