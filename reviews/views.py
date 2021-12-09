@@ -43,7 +43,9 @@ class ReviewListView(APIView):
 
     def post(self,request):
         request.data["owner"] = request.user.id
+        print('->>>>>', request.user.id)
         review = ReviewSerializer(data = request.data)
+        
         if review.is_valid():
             review.save() # <--- django ORM method to save to db
             return Response(review.data, status=status.HTTP_201_CREATED)

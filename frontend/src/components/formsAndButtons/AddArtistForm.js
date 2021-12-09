@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { Modal, Form, Button } from 'react-bootstrap'
 import axios from 'axios'
 import ImageUploadField from '../ImageUploadField'
+import { getTokenFromLocalStorage } from '../helpers/auth'
 
 const AddArtistForm = ({ handleClose }) => {
 
@@ -25,7 +26,12 @@ const AddArtistForm = ({ handleClose }) => {
   const handleArtistSubmit = async (event) => {
     event.preventDefault()
     try {
-      await axios.post('/api/artists/', formData)
+      await axios.post('/api/artists/', 
+        formData,
+        {
+          headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
+        }
+      )
       console.log('pushed')
     } catch (err) {
       setErrors(err.response.data)

@@ -10,12 +10,6 @@
   height: 80vh;
 }
 
-#record-single-pic {
-  border: 5px;
-  border-color: black;
-  // filter: blur(0px);
-}
-
 #form-container {
   width: 30%;
 }
@@ -24,9 +18,12 @@
   padding-left: 40px;
 }
 
+.purch-link {
+  text-decoration: none;
+}
+
 #home-carousel {
   background-size: cover;
-  // background-position: center;
   height: 50vh;
 }
 
@@ -34,6 +31,20 @@
   height: 50vh;
   background-position: center;
   background-size: cover;
-  // backdrop-filter: blur(8px);
-  // filter: blur(8px);
 }
+
+#record-index-hero {
+  background-image: linear-gradient(rgba(102, 45, 45, 0.3), rgba(0, 0, 0, 0.3)), url('https://i.ibb.co/K56ssL5/wallpaperflare-com-wallpaper.jpg');
+}
+
+#artist-index-hero {
+  background-image: linear-gradient(rgba(51, 23, 23, 0.3), rgba(0, 0, 0, 0.3)), url('https://i.ibb.co/x8MZnxL/dj-back.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+// .reactplayer-col {
+//   border: 20px;
+//   border-color: black;
+// }

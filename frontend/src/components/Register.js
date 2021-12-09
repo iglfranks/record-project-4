@@ -1,12 +1,16 @@
 import axios from 'axios'
 import React, { useState } from 'react'
 import { Container, Form } from 'react-bootstrap'
+import { useHistory } from 'react-router'
 import ImageUploadField from './ImageUploadField'
 
 
 
 
 const Register = () => {
+
+
+  const history = useHistory()
 
   const [formData, setFormData] = useState({
     username: '',
@@ -38,7 +42,7 @@ const Register = () => {
     event.preventDefault()
     try {
       await axios.post('/api/auth/register/', formData)
-      console.log('pushed')
+      history.push('/login')
     } catch (err) {
       setErrors(err.response.data)
       console.log(err.response.data)
@@ -46,7 +50,7 @@ const Register = () => {
   }
 
   const handleImageUrl = (url) => {
-    setFormData({ ...formData, image: url })
+    setFormData({ ...formData, profile_pic: url })
   }
 
 

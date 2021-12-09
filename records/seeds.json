@@ -11,7 +11,7 @@
     "type_of_record": "EP",
     "is_vinyl_only": false,
     "link": "https://bakeymusic.bandcamp.com/album/take-it-further-ep",
-    "soundcloud_link": "link",
+    "soundcloud_link": "https://soundcloud.com/shallnotfade/tin008-bakey-take-it-further-ep",
     "owner": 1,
     "artists": [
       1
@@ -30,7 +30,7 @@
     "type_of_record": "EP",
     "is_vinyl_only": false,
     "link": "https://dansudiscsuk.bandcamp.com/track/we-run",
-    "soundcloud_link": "link",
+    "soundcloud_link": "https://soundcloud.com/definitepartymaterial/bailey-ibbs-we-run",
     "owner": 1,
     "artists": [
       3
@@ -49,7 +49,7 @@
     "type_of_record": "EP",
     "is_vinyl_only": false,
     "link": "https://interplanetarycriminal.bandcamp.com/album/darkside-ep",
-    "soundcloud_link": "link",
+    "soundcloud_link": "https://soundcloud.com/shallnotfade/tin005-interplanetary-criminal-darkside-ep",
     "owner": 1,
     "artists": [
       2
@@ -68,7 +68,7 @@
     "type_of_record": "V/A",
     "is_vinyl_only": false,
     "link": "https://glbdomrec.bandcamp.com/track/a5-oldboy-owner-of-a-lonely-dub",
-    "soundcloud_link": "link",
+    "soundcloud_link": "https://soundcloud.com/glbdom/various-artist-spezial-series-vol-2-gdtapes005-preview?in=glbdom/sets/various-artist-spezial-3",
     "owner": 1,
     "artists": [
       14,
@@ -91,7 +91,7 @@
     "type_of_record": "EP",
     "is_vinyl_only": true,
     "link": "https://futureretrolondon.bandcamp.com/album/meeting-of-the-minds-vol-7",
-    "soundcloud_link": "link",
+    "soundcloud_link": "https://soundcloud.com/futureretrolondon/meeting-of-the-minds-vol-7-frmotm007",
     "owner": 1,
     "artists": [
       19,
@@ -111,7 +111,7 @@
     "type_of_record": "EP",
     "is_vinyl_only": false,
     "link": "https://nikkinair.bandcamp.com/album/shufflin",
-    "soundcloud_link": "link",
+    "soundcloud_link": "https://soundcloud.com/lobster-theremin/lt095-nikki-nair-shufflin",
     "owner": 1,
     "artists": [
       8
@@ -127,10 +127,10 @@
     "release_date": 2021,
     "label": "Poly Kicks",
     "genre": "Breaks",
-    "type_of_record": "single",
+    "type_of_record": "Single",
     "is_vinyl_only": false,
     "link": "https://overmono.bandcamp.com/album/bmw-track-so-u-kno",
-    "soundcloud_link": "link",
+    "soundcloud_link": "https://soundcloud.com/overmono/so-u-kno",
     "owner": 1,
     "artists": [
       7
@@ -149,7 +149,7 @@
     "type_of_record": "EP",
     "is_vinyl_only": false,
     "link": "https://steelcitydancediscs.bandcamp.com/track/lemon-3",
-    "soundcloud_link": "link",
+    "soundcloud_link": "https://soundcloud.com/steelcitydancediscs/scdd025-moktar-lemon",
     "owner": 1,
     "artists": [
       12
@@ -168,7 +168,7 @@
     "type_of_record": "EP",
     "is_vinyl_only": false,
     "link": "https://lobstertheremin.com/album/don-t-say-ep",
-    "soundcloud_link": "link",
+    "soundcloud_link": "https://soundcloud.com/lobster-theremin/distant007-yosh-dont-say-ep",
     "owner": 1,
     "artists": [
       9
@@ -186,11 +186,30 @@
     "genre": "Breaks",
     "type_of_record": "EP",
     "is_vinyl_only": false,
-    "link": "link",
-    "soundcloud_link": "link",
+    "link": "https://bakeymusic.bandcamp.com/album/bring-it-back-ep",
+    "soundcloud_link": "https://soundcloud.com/shallnotfade/tin021-bakey-bring-it-back-ep",
     "owner": 1,
     "artists": [
       1
+    ]
+  }
+},
+{
+  "model": "records.record",
+  "pk": 11,
+  "fields": {
+    "title": "The Rhythm",
+    "image": "http://res.cloudinary.com/iglfranks/image/upload/v1639053000/record_collector_test/sxkxwntrgo9w2vuso06p.jpg",
+    "release_date": 2021,
+    "label": "Algo:Riddims",
+    "genre": "UKG",
+    "type_of_record": "EP",
+    "is_vinyl_only": false,
+    "link": "https://algoriddims.bandcamp.com/album/a-r-premiere-eyesight-the-rhythm-e-p",
+    "soundcloud_link": "https://soundcloud.com/eyesightmusic/eyesight-the-rhythm-ep-algoriddims-out-now?si=72e530fb4c964787b67d60827a18c99e&utm_source=clipboard&utm_medium=text&utm_campaign=social_sharing",
+    "owner": 1,
+    "artists": [
+      20
     ]
   }
 }

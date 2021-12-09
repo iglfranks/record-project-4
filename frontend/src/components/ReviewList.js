@@ -1,7 +1,7 @@
 
 import React, { useEffect, useState } from 'react'
 import { Button, Card } from 'react-bootstrap'
-import { getPayload } from './helpers/auth'
+import { getPayload, getTokenFromLocalStorage } from './helpers/auth'
 import axios from 'axios'
 
 const ReviewList = ({ id, owner, rating, comment }) => {
@@ -22,7 +22,10 @@ const ReviewList = ({ id, owner, rating, comment }) => {
   const handleDel = async (event) => {
     try {
       axios.delete(
-        `/api/reviews/${event.target.id}`
+        `/api/reviews/${event.target.id}`,
+        {
+          headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
+        }
       )
       window.location.reload()
     } catch (err) {

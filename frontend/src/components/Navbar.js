@@ -33,15 +33,20 @@ const Navbar = () => {
         <button className='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
-        <div className='collapse navbar-collapse'>
+        <div className='collapse navbar-collapse d-flex justify-content-between'>
           <div className='navbar-nav'>
             <Link to='/' className='nav-link'>Home</Link>
             <Link to='/records' className='nav-link'>Records</Link>
             <Link to='/artists' className='nav-link'>Artists</Link>
+            {!userIsAuthenticated() ?
+              <div></div>
+              :
+              <>
+                <Link to='/addrecord' className='nav-link btn btn-primary text-white'>Add A Record</Link>
+              </>
+            }
           </div>
-          <div className='navbar-nav navbar-text'>
-            {/* <Link to='/register' className='nav-link'>Register</Link>
-            <Link to='/login' className='nav-link'>Login</Link> */}
+          <div className='navbar-nav navbar-text d-flex'>
 
             {!userIsAuthenticated() ?
               <>
@@ -50,9 +55,8 @@ const Navbar = () => {
               </>
               :
               <>
+                {/* <Link to='/addrecord' className='nav-link btn btn-primary text-white'>Add A Record</Link> */}
                 <Link to='/profile' className='nav-link'>Profile</Link>
-                <Link to='/addrecord' className='nav-link btn btn-primary text-white'>Add A Record</Link>
-                
                 <button className='btn btn-primary' onClick={handleLogout}>Logout</button>
               </>
             

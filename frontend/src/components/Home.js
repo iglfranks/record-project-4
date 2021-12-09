@@ -46,7 +46,7 @@ const Home = () => {
       <section className='home-hero'>
         <div className='px-4 py-5 d-flex justify-content-center'>
           <div className='d-flex flex-column align-content-center'>
-            <h1 className='fw-bold text-white'>Title</h1>
+            <h1 className='fw-bold text-white'>RECORDID</h1>
             <div>
               <p className='text-white'>Subtitle for your records</p>
             </div>

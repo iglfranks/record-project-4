@@ -3,6 +3,7 @@ import axios from 'axios'
 import { useParams } from 'react-router'
 import { Col, Row, Container, Figure, Card, OverlayTrigger, Tooltip } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
+import ReactPlayer from 'react-player'
 
 
 
@@ -44,7 +45,7 @@ const SingleArtist = () => {
     <>
       {artist ?
         <>
-          <Container style={{ marginTop: '75px' }}>
+          <Container style={{ marginTop: '65px', marginBottom: '30px' }}>
             <Row>
 
               <Col md={{ span: 4 }}>
@@ -68,6 +69,12 @@ const SingleArtist = () => {
                     <h4>{artist.name}</h4>
                   </Col>
                   <hr />
+                </Row>
+                <Row>
+                  <ReactPlayer
+                    url='https://www.youtube.com/watch?v=jo7CUO0p3RU&t=1s'
+                    // height='200px'
+                  />
                 </Row>
               </Col>
 

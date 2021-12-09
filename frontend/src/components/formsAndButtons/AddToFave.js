@@ -1,8 +1,14 @@
 import axios from 'axios'
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { useParams } from 'react-router'
+import { Button, Overlay, Tooltip } from 'react-bootstrap'
+import { getTokenFromLocalStorage } from '../helpers/auth'
 
 const AddToFave = () => {
+
+  const [abled, setAbled] = useState()
+  const [show, setShow] = useState(false)
+  const target = useRef(null)
 
   const { id } = useParams()
   const [formData, setFormData] = useState({
@@ -17,7 +23,14 @@ const AddToFave = () => {
 
   const handleAddFave = async () => {
     try {
-      await axios.post('/api/favourites/', formData)
+      await axios.post('/api/favourites/', 
+        formData,
+        {
+          headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
+        }
+      )
+      setAbled('disabled')
+      setShow(true)
     } catch (err) {
       console.log(err)
     }
@@ -25,7 +38,16 @@ const AddToFave = () => {
 
   console.log(formData)
   return (
-    <button className='btn btn-primary' onClick={handleAddFave}>Fave</button>
+    <>
+      <Button ref={target} className={abled} variant='primary' onClick={handleAddFave}>Fave</Button>
+      <Overlay target={target.current} show={show} placement='bottom'>
+        {(props) => (
+          <Tooltip {...props}>
+            Added!
+          </Tooltip>
+        )}
+      </Overlay>
+    </>
   )
 
 }

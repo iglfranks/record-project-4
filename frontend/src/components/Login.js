@@ -14,7 +14,7 @@ const Login = () => {
     password: '',
   })
 
-  // const [error, setError] = useState(false)
+  const [hasError, setHasError] = useState(false)
 
   const handleChange = (event) => {
     const newFormData = { ...formData, [event.target.name]: event.target.value }
@@ -30,11 +30,11 @@ const Login = () => {
     event.preventDefault()
     try {
       const response = await axios.post('/api/auth/login/', formData)
-      console.log(response)
       setItemToLocalStorage(response.data.token)
       history.push('/')
     } catch (err) {
       console.log(err.response)
+      setHasError(true)
     }
   }
 
@@ -44,12 +44,24 @@ const Login = () => {
 
         <Form.Group>
           <Form.Label>Email</Form.Label>
-          <Form.Control name='email' placeholder='Email' onChange={handleChange} value={formData.email}/>
+          <Form.Control 
+            className={hasError ? 'border-danger' : '' }
+            name='email' 
+            placeholder='Email' 
+            onChange={handleChange} 
+            value={formData.email}/>
         </Form.Group>
 
         <Form.Group>
           <Form.Label>Password</Form.Label>
-          <Form.Control name='password' type='password' placeholder='Password' onChange={handleChange} value={formData.password}/>
+          <Form.Control 
+            className={hasError ? 'border-danger' : '' } 
+            name='password' 
+            type='password' 
+            placeholder='Password' 
+            onChange={handleChange} 
+            value={formData.password}/>
+          <Form.Text className='text-danger'>{hasError ? 'Your email or password is incorrect.' : ''}</Form.Text>
         </Form.Group>
 
         <button type='submit' className='btn btn-primary'>Submit</button>

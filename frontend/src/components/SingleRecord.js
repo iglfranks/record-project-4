@@ -61,24 +61,23 @@ const SingleRecord = () => {
     }
     setReviewSet()
 
-  }, [record])
-
-  // const renderToolTip = () 
+  }, [record]) 
 
   console.log(hasError)
-  // console.log(recordTypeInfo)
-  // console.log(reviews)
-  // console.log(record)
   return (
-    <Container style={{ marginTop: '75px' }}>
+    <Container style={{ marginTop: '45px', marginBottom: '50px' }}>
       <Row id='pic-and-info'>
 
         <Col md={{ span: 4 }}>
-          <Figure>
+          <Figure >
             <Figure.Image
               src={record.image}
               alt={`${record.title} Cover`}
               id='record-single-pic'
+              style={{ 
+                border: 'solid black 10px',
+                borderRadius: '10px',
+              }}
             />
           </Figure>
         </Col>
@@ -96,10 +95,8 @@ const SingleRecord = () => {
                   <h4>{record.title}</h4>
                   <h5>{record.release_date}</h5>
                 </Col>
-                {/* <hr /> */}
               </div>
               <div id='button-div'>
-                {/* <button className='btn btn-primary'>Fave</button> */}
                 <AddToFave />
               </div>
             </div>
@@ -112,17 +109,21 @@ const SingleRecord = () => {
             <hr />
 
             <Col>
-              <Row>
+              <Row style={{ 
+                display: 'flex',
+                flexDirection: 'column', 
+                
+              }}>
                 <Col>
                   <p>{recordTypeInfo}</p>
                 </Col>
                 <Col>
-                  <p>{record.link}</p>
+                  <p ><a href={record.link} className='purch-link'>Purchase Link</a></p>
                 </Col>
               </Row>
             </Col>
 
-            <Col>
+            <Col className='reactplayer-col'>
               <ReactPlayer
                 url={record.soundcloud_link}
                 height='200px'
@@ -187,14 +188,19 @@ const SingleRecord = () => {
                 })}
               </Col>
               :
-              <Row>
-                <h1>error</h1> : <h1>Loading</h1>
-              </Row>
+
+              <>
+                {hasError ?
+                  <h1>Err</h1>
+                  :
+                  <h1>Loading</h1>
+                }
+              </>
             }
           </Col>
 
         </Row>
-      
+
       </Container>
 
     </Container>

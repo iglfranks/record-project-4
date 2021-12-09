@@ -58,7 +58,11 @@ const Profile = () => {
 
   console.log(userProfile)
   return (
-    <Container>
+    <Container style={{ 
+      width: '80%',
+      marginTop: '45px',
+      marginBottom: '45px',
+    }}>
       {userProfile.length !== 0 ?
         
         <Row>

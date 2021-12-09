@@ -58,7 +58,7 @@
   "pk": 7,
   "fields": {
     "name": "Overmono",
-    "image": "https://i.ibb.co/swKK8VL/over-pic.jpg",
+    "image": "https://i.ibb.co/H4dg2H1/Everything-UNeed-EP-Overmono.jpg",
     "social_link": "https://www.instagram.com/overmono/"
   }
 },
@@ -158,6 +158,15 @@
   "fields": {
     "name": "Sully",
     "image": "image",
+    "social_link": "link"
+  }
+},
+{
+  "model": "artists.artist",
+  "pk": 20,
+  "fields": {
+    "name": "Eyesight",
+    "image": "http://res.cloudinary.com/iglfranks/image/upload/v1639052973/record_collector_test/oujfjayhoummtmt6phff.jpg",
     "social_link": "link"
   }
 }

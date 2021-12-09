@@ -4,9 +4,13 @@ import axios from 'axios'
 import Select from 'react-select'
 import ImageUploadField from './ImageUploadField'
 import AddArtistForm from './formsAndButtons/AddArtistForm'
+import { useHistory } from 'react-router'
+import { getTokenFromLocalStorage } from './helpers/auth'
 
 const AddRecord = () => {
 
+
+  const history = useHistory()
   const [artistsList, setArtistsList] = useState([])
   const [hasError, setHasError] = useState(false)
   const [show, setShow] = useState(false)
@@ -63,9 +67,6 @@ const AddRecord = () => {
   }, [artistsList])
 
   const artistSelect = (selected, name) => {
-    console.log(name)
-    console.log(selected)
-
     const values = selected ? selected.map(item => parseInt(item.value)) : []
     setFormData({ ...formData, [name]: [...values] })
   }
@@ -83,8 +84,13 @@ const AddRecord = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
-      await axios.post('/api/records/', formData)
-      console.log('pushed')
+      await axios.post('/api/records/', 
+        formData,
+        {
+          headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
+        }
+      )
+      history.push('/records')
     } catch (err) {
       setErrors(err.response.data)
       console.log(err.response.data)

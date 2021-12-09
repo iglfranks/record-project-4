@@ -11,5 +11,5 @@ class FavouriteSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class PopulatedFavouriteSerializer(FavouriteSerializer):
-
-  record_set = NewRecordSerializer(read_only=True, many=True)
+  serializers.StringRelatedField(many=True)
+  record = NewRecordSerializer(read_only=True)

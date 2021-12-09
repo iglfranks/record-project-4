@@ -38,7 +38,6 @@ class UserSerializer(serializers.ModelSerializer):
     
 
 class PopulatedUserSerializer(UserSerializer):
-
   reviews = NewReviewSerializer(read_only=True, many=True)
   records = NewRecordSerializer(read_only=True, many=True)
   favourites = FavouriteSerializer(read_only=True, many=True)
