@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { Button, Card } from 'react-bootstrap'
 import { getPayload, getTokenFromLocalStorage } from './helpers/auth'
 import axios from 'axios'
+import StarRatings from 'react-star-ratings'
 
 const ReviewList = ({ id, owner, rating, comment }) => {
 
@@ -44,11 +45,23 @@ const ReviewList = ({ id, owner, rating, comment }) => {
           {owner.username}
         </div>
         <div>
-          {owner.id === userPayload ? <Button id={id} onClick={handleDel}>X</Button> : <div></div>}
+          {owner.id === userPayload ? <Button id={id} onClick={handleDel} style={{ 
+            borderRadius: '500px',
+            backgroundColor: 'darkred',
+            border: 'solid darkred',
+          }}>X</Button> : <div></div>}
         </div>
       </Card.Header>
       <Card.Body>
-        <Card.Title>{rating}</Card.Title>
+        <Card.Title>
+          <StarRatings
+            rating={rating}
+            numberOfStars={5}
+            starRatedColor='rgb(255, 209, 57)'
+            starDimension='18px'
+            starSpacing='3px'
+          />
+        </Card.Title>
         <Card.Text>{comment}</Card.Text>
       </Card.Body>
     </>

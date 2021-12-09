@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react'
 import { Link, useLocation, useHistory } from 'react-router-dom'
 import { getPayload } from './helpers/auth'
+import { Button } from 'react-bootstrap'
 
 
 const Navbar = () => {
@@ -29,7 +30,7 @@ const Navbar = () => {
     // <div className='container-fluid'>
     <nav className='navbar navbar-dark bg-dark navbar-expand-lg sticky-top'>
       <div className='container-fluid mainNavDiv'>
-        <a className='navbar-brand' href='#'>Navbar</a>
+        <a className='navbar-brand' href='/'>Record-id</a>
         <button className='navbar-toggler' type='button' data-bs-toggle='collapse' data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
@@ -42,7 +43,11 @@ const Navbar = () => {
               <div></div>
               :
               <>
-                <Link to='/addrecord' className='nav-link btn btn-primary text-white'>Add A Record</Link>
+                <Link to='/addrecord' className='nav-link btn btn-primary text-white' style={{
+                  backgroundColor: 'rgba(71, 85, 209, 0.952)',
+                  border: 'solid rgb(71, 85, 209)',
+                  marginLeft: '20px',
+                }}>Add A Record</Link>
               </>
             }
           </div>
@@ -57,10 +62,15 @@ const Navbar = () => {
               <>
                 {/* <Link to='/addrecord' className='nav-link btn btn-primary text-white'>Add A Record</Link> */}
                 <Link to='/profile' className='nav-link'>Profile</Link>
-                <button className='btn btn-primary' onClick={handleLogout}>Logout</button>
+                <Button className='btn btn-primary' onClick={handleLogout}
+                  style={{
+                    backgroundColor: 'rgba(71, 85, 209, 0.952)',
+                    border: 'solid rgb(71, 85, 209)',
+                    marginLeft: '20px',
+                  }}>Logout</Button>
               </>
-            
-          
+
+
             }
 
           </div>

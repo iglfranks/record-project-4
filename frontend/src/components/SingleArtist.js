@@ -32,7 +32,6 @@ const SingleArtist = () => {
 
   useEffect(() => {
     const addRecords = () => {
-      // console.log(artist.record_set)
       setArtistRecords(artist.record_set)
 
     }
@@ -54,6 +53,10 @@ const SingleArtist = () => {
                     src={artist.image}
                     alt={`${artist.name} Pic`}
                     id='record-single-pic'
+                    style={{
+                      border: 'solid black 10px',
+                      borderRadius: '10px',
+                    }}
                   />
                 </Figure>
               </Col>
@@ -73,7 +76,7 @@ const SingleArtist = () => {
                 <Row>
                   <ReactPlayer
                     url='https://www.youtube.com/watch?v=jo7CUO0p3RU&t=1s'
-                    // height='200px'
+                  // height='200px'
                   />
                 </Row>
               </Col>
@@ -112,9 +115,11 @@ const SingleArtist = () => {
                 })}
               </Row>
               :
-              <Row>
-                <h1>error</h1> : <h1>Loading</h1>
-              </Row>
+              <>
+                {hasError ?
+                  <h1>error</h1> : <h1>loading</h1>
+                }
+              </>
             }
 
 

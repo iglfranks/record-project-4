@@ -1,13 +1,14 @@
 import React, { useState } from 'react'
-import { Form, FloatingLabel, Row } from 'react-bootstrap'
+import { Form, FloatingLabel, Row, Button } from 'react-bootstrap'
 import axios from 'axios'
 import { useParams } from 'react-router'
-import { getTokenFromLocalStorage } from '../helpers/auth'
+import { getTokenFromLocalStorage, getPayload } from '../helpers/auth'
 
 
 const AddReviewForm = () => {
 
   const { id } = useParams()
+  const [hasError, setHasError] = useState(false)
 
   const [formData, setFormData] = useState({
     comment: '',
@@ -15,12 +16,17 @@ const AddReviewForm = () => {
     record: id,
   })
 
-
+  const userIsAuthenticated = () => {
+    const payload = getPayload()
+    console.log('->>>> PAYLOAD', payload)
+    if (!payload) return false
+    return true
+  }
 
   const handleChange = (event) => {
     const newFormData = { ...formData, [event.target.name]: event.target.value }
     setFormData(newFormData)
-    
+
   }
 
   const handleNumChange = (event) => {
@@ -32,16 +38,16 @@ const AddReviewForm = () => {
   const handleSubmit = async (event) => {
     event.preventDefault()
     try {
-      await axios.post('/api/reviews/', 
+      await axios.post('/api/reviews/',
         formData,
         {
           headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
         }
       )
-      console.log('pushed')
+      window.location.reload()
     } catch (err) {
-      // setErrors(err.response.data)
       console.log(err.response.data)
+      setHasError(true)
     }
   }
 
@@ -53,29 +59,49 @@ const AddReviewForm = () => {
             <Form.Control
               as='textarea'
               name='comment'
-              value={formData.username}
+              value={formData.comment}
               onChange={handleChange} />
+            <Form.Text className='text-danger'>{hasError ? 'Please enter a comment!' : ''}</Form.Text>
           </FloatingLabel>
         </Form.Group>
-
-        <Form.Group>
-          <Form.Label>Rating</Form.Label>
-          <Form.Select
-            name='rating'
-            value={parseInt(formData.rating)}
-            onChange={handleNumChange}
-            style={{ width: '30%' }}
-          >
-            <option>1</option>
-            <option>2</option>
-            <option>3</option>
-            <option>4</option>
-            <option>5</option>
-          </Form.Select>
-        </Form.Group>
+        <div style ={{ 
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}>
+          <Form.Group>
+            <Form.Label>Rating</Form.Label>
+            <Form.Select
+              className={hasError ? 'border-danger' : '' }
+              name='rating'
+              value={parseInt(formData.rating)}
+              onChange={handleNumChange}
+              style={{ width: '100%' }}
+            >
+              <option>-</option>
+              <option>1</option>
+              <option>2</option>
+              <option>3</option>
+              <option>4</option>
+              <option>5</option>
+            </Form.Select>
+          </Form.Group>
+          {!userIsAuthenticated() ?
+            <Button disabled>Login to make a review!</Button>
+            :
+            <Button 
+              type='submit' 
+              variant='primary'
+              style ={{  
+                height: '40px',
+                borderRadius: '10px',
+              }}
+            >
+              Submit</Button>
+          }
+          
+        </div>
       </Row>
-
-      <button type='submit' className='btn btn-primary'>Submit</button>
 
     </Form>
   )

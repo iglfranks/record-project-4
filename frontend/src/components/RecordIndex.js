@@ -58,6 +58,10 @@ const RecordIndex = () => {
               <ReactPlayer
                 url={randomRec.soundcloud_link}
                 height='200px'
+                style={{ 
+                  border: 'solid rgba(231, 129, 13) 5px',
+                  borderRadius: '5px',
+                }}
               />
               :
               <p>Loading</p>

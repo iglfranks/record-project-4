@@ -3,7 +3,7 @@ from django.contrib.auth import get_user_model
 import django.contrib.auth.password_validation as validations
 from django.contrib.auth.hashers import make_password
 from django.core.exceptions import ValidationError
-from favourites.serializers import FavouriteSerializer
+from favourites.serializers import FavouriteSerializer, PopulatedFavouriteSerializer
 from records.single_serializer import NewRecordSerializer
 
 from reviews.serializers import ReviewSerializer
@@ -38,6 +38,7 @@ class UserSerializer(serializers.ModelSerializer):
     
 
 class PopulatedUserSerializer(UserSerializer):
+  # serializers.StringRelatedField(many=True)
   reviews = NewReviewSerializer(read_only=True, many=True)
   records = NewRecordSerializer(read_only=True, many=True)
-  favourites = FavouriteSerializer(read_only=True, many=True)
+  favourites = PopulatedFavouriteSerializer(read_only=True, many=True)

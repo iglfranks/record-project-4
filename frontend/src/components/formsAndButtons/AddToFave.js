@@ -23,7 +23,7 @@ const AddToFave = () => {
 
   const handleAddFave = async () => {
     try {
-      await axios.post('/api/favourites/', 
+      await axios.post('/api/favourites/',
         formData,
         {
           headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
@@ -34,12 +34,21 @@ const AddToFave = () => {
     } catch (err) {
       console.log(err)
     }
-  } 
+  }
 
   console.log(formData)
   return (
     <>
-      <Button ref={target} className={abled} variant='primary' onClick={handleAddFave}>Fave</Button>
+      <Button ref={target} 
+        className={abled} 
+        variant='secondary'
+        style={{
+          backgroundColor: 'rgba(71, 85, 209, 0.952)',
+          border: 'solid rgb(71, 85, 209)',
+        }}
+        onClick={handleAddFave}
+      >Fave
+      </Button>
       <Overlay target={target.current} show={show} placement='bottom'>
         {(props) => (
           <Tooltip {...props}>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Container, Row, Col, Card } from 'react-bootstrap'
+import { Link } from 'react-router-dom'
+import { Container, Row, Col, Card, OverlayTrigger, Tooltip, Figure } from 'react-bootstrap'
 import { getPayload } from './helpers/auth'
 import { useHistory } from 'react-router'
 import RecordCard from './RecordCard'
@@ -11,6 +12,7 @@ const Profile = () => {
 
   const [userId, setUserId] = useState()
   const [userProfile, setUserProfile] = useState([])
+  const [userFaves, setUserFaves] = useState([])
   const [hasError, setHasError] = useState(false)
   const [pp, setPp] = useState()
 
@@ -40,15 +42,21 @@ const Profile = () => {
   }, [userId])
 
   useEffect(() => {
+
     const settingPic = () => {
       if (!userProfile.profile_pic) {
         setPp('https://i.ibb.co/XscjRqG/plain-vinyl.jpg')
       } else {
         setPp(userProfile.profile_pic)
       }
-
     }
     settingPic()
+
+    const settingFav = () => {
+      setUserFaves(userProfile.favourites)
+    }
+    settingFav()
+
   }, [userProfile])
 
   const handleLogout = () => {
@@ -56,7 +64,7 @@ const Profile = () => {
     history.push('/')
   }
 
-  console.log(userProfile)
+  console.log(userFaves)
   return (
     <Container style={{ 
       width: '80%',
@@ -68,7 +76,7 @@ const Profile = () => {
         <Row>
 
           <Col>
-            <Card>
+            <Card style={{ marginBottom: '20px' }}>
               <Card.Header>
                 <Card.Img src={pp} />
               </Card.Header>
@@ -80,7 +88,7 @@ const Profile = () => {
             <button className='btn btn-primary' onClick={handleLogout}>Logout</button>
           </Col>
 
-          <Col lg={8}>
+          <Col lg={7}>
             <h1>My Records</h1>
             <hr />
             <Container>
@@ -97,11 +105,47 @@ const Profile = () => {
           </Col>
 
           <Col>
-            <h4>Favourites</h4>
+            
             <Container>
-              <Row lg={5}>
-                
-              </Row>
+              <h4 style={{ marginBottom: '20px' }}>Favourites</h4>
+              {userFaves ?
+                <Row lg={1}> 
+                  {userFaves.map(rec => {
+                    return (
+                      <Col key={rec.id}>
+                        <OverlayTrigger
+                          placement='top'
+                          overlay={
+                            <Tooltip>{rec.record.title}</Tooltip>
+                          }
+                        >
+                          <Card style={{ 
+                            padding: '5px',
+                            marginBottom: '10px',
+                          }}>
+                            <Link to={`/records/${rec.record.id}`}>
+                              <Figure style={{ margin: '0' }}>
+                                <Figure.Image
+                                  src={rec.record.image}
+                                  alt={`${rec.record.title} Cover`}
+                                  id='record-single-pic'
+                                  style={{ margin: '0' }}
+                                />
+                              </Figure>
+                            </Link>
+                          </Card>
+                        </OverlayTrigger>
+
+                      </Col>
+                    )
+                  })}
+                </Row>
+                :
+                <Row>
+                  <h1>loading</h1>
+                </Row>
+              }
+              
             </Container>
           </Col>
 

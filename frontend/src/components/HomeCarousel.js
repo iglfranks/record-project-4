@@ -20,7 +20,6 @@ const HomeCarousel = ({ id, image, title }) => {
       <Carousel.Caption style={{ 
         top: '0',
         bottom: 'auto',
-        // width: '100vh',
         color: 'white',
         backgroundColor: 'rgba(0,0,0, 0.4',
         borderRadius: '20px',

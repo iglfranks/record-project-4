@@ -11,7 +11,7 @@ const Home = () => {
 
   const fewRecords = []
   const [theFewRecords, setTheFewRecords] = useState([])
-  
+
 
   useEffect(() => {
     const getData = async () => {
@@ -31,7 +31,7 @@ const Home = () => {
     const set = () => {
       for (let i = 0; i < 6; i++) {
         item = records[i]
-        if (!item) return 
+        if (!item) return
         fewRecords.push(item)
       }
       setTheFewRecords(fewRecords)
@@ -67,7 +67,7 @@ const Home = () => {
                       backgroundPosition: 'cover',
                       paddingTop: '30px',
                     }}>
-                      <HomeCarousel {...rec}/>
+                      <HomeCarousel {...rec} />
                     </Carousel.Item>
                   )
                 })}
@@ -75,13 +75,15 @@ const Home = () => {
             </>
 
             :
-            
-            <Row>
-              <h1>test</h1>
-            </Row>
+
+            <>
+              {hasError ?
+                <h1>error</h1> : <h1>loading</h1>
+              }
+            </>
           }
         </div>
-        
+
       </section>
     </>
   )
