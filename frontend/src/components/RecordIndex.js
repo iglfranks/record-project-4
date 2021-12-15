@@ -17,11 +17,8 @@ const RecordIndex = () => {
       try {
         const { data } = await axios.get('/api/records')
         setRecords(data)
-        // console.log(records)
       } catch (err) {
-        console.log(err)
         setHasError(true)
-        // console.log(hasError)
       }
 
     }
@@ -37,8 +34,6 @@ const RecordIndex = () => {
     chooseRandom()
   }, [records])
 
-  console.log(hasError)
-  console.log(randomRec)
   return (
     <>
       <Container fluid id='record-index-hero' style={{
@@ -71,15 +66,33 @@ const RecordIndex = () => {
       </Container>
       <section>
         <div className='container-md my-4'>
-          <div className='row row-cols-4'>
-            {records.map(record => {
-              return (
-                <div key={record.id} className='col mb-3'>
-                  <RecordCard key={record.id} {...record} />
+          {records ?
+            <div className='row row-cols-4'>
+              {records.map(record => {
+                return (
+                  <div key={record.id} className='col mb-3'>
+                    <RecordCard key={record.id} {...record} />
+                  </div>
+                )
+              })}
+            </div>
+        
+            :
+
+            <div className='row row-cols-1'>
+              {hasError ?
+                <div className='col'>
+                  <h1>An Error has occured!</h1>
                 </div>
-              )
-            })}
-          </div>
+
+                : 
+                <div className='col'>
+                  <h1>Loading...</h1>
+                </div>
+              }
+            </div>
+          }
+          
         </div>
       </section>
     </>

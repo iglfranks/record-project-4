@@ -32,7 +32,7 @@ const AddArtistForm = ({ handleClose }) => {
           headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
         }
       )
-      console.log('pushed')
+      window.location.reload()
     } catch (err) {
       setErrors(err.response.data)
       console.log(err.response.data)
@@ -84,7 +84,7 @@ const AddArtistForm = ({ handleClose }) => {
             />
           </Form.Group>
 
-          <Button type='submit' variant='primary' onClick={handleClose}>
+          <Button type='submit' variant='primary' onClick={handleClose} style={{ marginTop: '20px' }}>
             Submit
           </Button>
 

@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react'
 import { Carousel, Row } from 'react-bootstrap'
 import axios from 'axios'
 import HomeCarousel from './HomeCarousel'
+import SoundCloud from 'react-custom-soundcloud'
+import ReactPlayer from 'react-player'
 
 const Home = () => {
 
@@ -44,16 +46,43 @@ const Home = () => {
   return (
     <>
       <section className='home-hero'>
-        <div className='px-4 py-5 d-flex justify-content-center'>
+        <div className='px-4 py-5' style={{
+          display: 'flex',
+          justifyContent: 'space-evenly',
+          alignItems: 'center',
+        }}>
+
           <div className='d-flex flex-column align-content-center'>
-            <h1 className='fw-bold text-white'>RECORDID</h1>
+            <h1 className='fw-bold text-white'>RECORD-ID</h1>
             <div>
-              <p className='text-white'>Subtitle for your records</p>
+              <p className='text-white'>Browse an array of records varying in genre to add to your collection.</p>
             </div>
+          </div>
+
+          <div id='playlist-box'>
+            {/* <SoundCloud
+              playlist='1245424987'
+            /> */}
+
+            <ReactPlayer
+              url={'https://soundcloud.com/beltersmag/sets/belters-free-tunes'}
+              height='450px'
+              style={{
+                border: 'solid rgba(231, 129, 13, 0.822) 5px',
+                borderRadius: '5px',
+              }}
+            />
           </div>
         </div>
       </section>
       <section>
+        <div className='container-fluid py-3' style={{
+          display: 'flex',
+          justifyContent: 'center',
+          backgroundColor: 'black',
+        }}>
+          <h1 style={{ color: 'white' }}>Featured Records</h1>
+        </div>
         <div>
           {theFewRecords !== [] ?
             <>
@@ -85,6 +114,12 @@ const Home = () => {
         </div>
 
       </section>
+      {/* <div>
+        <SoundCloud
+          playlist='1245424987'
+        // theme='light'
+        />
+      </div> */}
     </>
   )
 

@@ -46,18 +46,34 @@ const ArtistIndex = () => {
       </Container>
       <section>
         <div className='container-md my-4'>
-          <div className='row row-cols-4'>
-            {artists.map(artist => {
-              return (
-                <div key={artist.id} className='col mb-3'>
-                  <ArtistCard key={artist.id} {...artist} />
+          {artists ?
+            <div className='row row-cols-4'>
+              {artists.map(artist => {
+                return (
+                  <div key={artist.id} className='col mb-3'>
+                    <ArtistCard key={artist.id} {...artist} />
 
-                  
+                    
 
+                  </div>
+                )
+              })}
+            </div>
+            :
+            <div className='row row-cols-1'>
+              {hasError ?
+                <div className='col'>
+                  <h1>An Error has occured!</h1>
                 </div>
-              )
-            })}
-          </div>
+
+                : 
+                <div className='col'>
+                  <h1>Loading...</h1>
+                </div>
+              }
+            </div>
+          }
+          
         </div>
       </section>
     </>

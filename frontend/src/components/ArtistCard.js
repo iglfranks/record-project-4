@@ -8,7 +8,7 @@ const ArtistCard = ({ id, name, image }) => {
       <Link to={`/artists/${id}`}>
         <img className='card-img-top' src={image} alt='Record Image' />
         <div className='card-footer border-dark'>
-          <h6 className='card-title cardInfo'>{name}</h6>
+          <h6 className='card-title cardInfo text-black'>{name}</h6>
         </div>
       </Link>
     </div>

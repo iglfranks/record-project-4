@@ -207,13 +207,13 @@ const SingleRecord = () => {
                 </Col>
                 :
 
-                <>
+                <Col>
                   {hasError ?
-                    <h1>Err</h1>
+                    <h5>An error has occured!</h5>
                     :
-                    <h1>Loading</h1>
+                    <h1>Loading...</h1>
                   }
-                </>
+                </Col>
               }
             </Col>
 

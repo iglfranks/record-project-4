@@ -103,7 +103,7 @@ const AddRecord = () => {
   console.log('has error->>>>', hasError)
   console.log(formData)
   return (
-    <Container>
+    <Container id='add-record-con'>
       <Form onSubmit={handleSubmit}>
 
         <Form.Group>
@@ -199,9 +199,10 @@ const AddRecord = () => {
               onChange={(selected) => artistSelect(selected, 'artists')}
               options={selectOptions}
               isMulti
+              
             />
           </Form.Group>
-          <Button variant='primary' onClick={handleShow}>
+          <Button variant='primary' onClick={handleShow} style={{ marginTop: '15px' }}>
             Add Artist
           </Button>
 
@@ -229,10 +230,13 @@ const AddRecord = () => {
             name='soundcloud_link'
             placeholder='Upload the full previews or just 1 song'
             value={formData.soundcloud_link}
-            onChange={handleChange} />
+            onChange={handleChange} 
+            style={{ marginBottom: '15px' }}
+          />
         </Form.Group>
-
-        <button type='submit' className='btn btn-primary'>Submit</button>
+        <div style={{ textAlign: 'center' }}>
+          <button type='submit' className='btn btn-primary'>Submit!</button>
+        </div>
 
       </Form>
     </Container>

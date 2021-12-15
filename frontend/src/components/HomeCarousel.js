@@ -6,10 +6,7 @@ const HomeCarousel = ({ id, image, title }) => {
 
   return (
     <Link to={`/records/${id}`} >
-      <Figure style={{
-        
-        
-      }}>
+      <Figure>
         <Figure.Image
           src={image}
           alt={`${title} Cover Art`}

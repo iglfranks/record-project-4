@@ -15,7 +15,6 @@ const Navbar = () => {
 
   const userIsAuthenticated = () => {
     const payload = getPayload()
-    console.log('->>>> PAYLOAD', payload)
     if (!payload) return false
     return true
   }
@@ -27,7 +26,6 @@ const Navbar = () => {
 
   console.log(userIsAuthenticated())
   return (
-    // <div className='container-fluid'>
     <nav className='navbar navbar-dark bg-dark navbar-expand-lg sticky-top'>
       <div className='container-fluid mainNavDiv'>
         <a className='navbar-brand' href='/'>Record-id</a>
@@ -60,7 +58,6 @@ const Navbar = () => {
               </>
               :
               <>
-                {/* <Link to='/addrecord' className='nav-link btn btn-primary text-white'>Add A Record</Link> */}
                 <Link to='/profile' className='nav-link'>Profile</Link>
                 <Button className='btn btn-primary' onClick={handleLogout}
                   style={{

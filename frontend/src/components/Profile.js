@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import { Container, Row, Col, Card, OverlayTrigger, Tooltip, Figure } from 'react-bootstrap'
-import { getPayload } from './helpers/auth'
+import { Container, Row, Col, Card, OverlayTrigger, Tooltip, Figure, Button } from 'react-bootstrap'
+import { getPayload, getTokenFromLocalStorage } from './helpers/auth'
 import { useHistory } from 'react-router'
 import RecordCard from './RecordCard'
 
@@ -64,15 +64,29 @@ const Profile = () => {
     history.push('/')
   }
 
+  const handleDelete = async (event) => {
+    try {
+      axios.delete(
+        `/api/favourites/${event.target.id}`,
+        {
+          headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
+        }
+      )
+      window.location.reload()
+    } catch (err) {
+      setHasError(true)
+    }
+  }
+
   console.log(userFaves)
   return (
-    <Container style={{ 
+    <Container style={{
       width: '80%',
       marginTop: '45px',
       marginBottom: '45px',
     }}>
       {userProfile.length !== 0 ?
-        
+
         <Row>
 
           <Col>
@@ -92,11 +106,11 @@ const Profile = () => {
             <h1>My Records</h1>
             <hr />
             <Container>
-              <Row lg={4}>
+              <Row lg={3}>
                 {userProfile.records.map(rec => {
                   return (
                     <Col key={rec.id}>
-                      <RecordCard {...rec}/>
+                      <RecordCard {...rec} />
                     </Col>
                   )
                 })}
@@ -105,21 +119,23 @@ const Profile = () => {
           </Col>
 
           <Col>
-            
+
             <Container>
               <h4 style={{ marginBottom: '20px' }}>Favourites</h4>
               {userFaves ?
-                <Row lg={1}> 
+                <Row lg={1}>
                   {userFaves.map(rec => {
                     return (
-                      <Col key={rec.id}>
+                      <Col key={rec.id} id={rec.id} style={{
+                        display: 'flex',
+                      }}>
                         <OverlayTrigger
                           placement='top'
                           overlay={
                             <Tooltip>{rec.record.title}</Tooltip>
                           }
                         >
-                          <Card style={{ 
+                          <Card style={{
                             padding: '5px',
                             marginBottom: '10px',
                           }}>
@@ -135,28 +151,33 @@ const Profile = () => {
                             </Link>
                           </Card>
                         </OverlayTrigger>
-
+                        <Button onClick={handleDelete} id={rec.id} style={{
+                          height: '40px',
+                          borderRadius: '500px',
+                          backgroundColor: 'rgba(71, 85, 209, 0.952)',
+                          border: 'solid rgb(71, 85, 209)',
+                          marginLeft: '10px',
+                        }}>X</Button>
                       </Col>
                     )
                   })}
                 </Row>
                 :
-                <Row>
-                  <h1>loading</h1>
+                <Row lg={1}>
+                  {hasError ?
+                    <Col>
+                      <h5>An Error has occured!</h5>
+                    </Col>
+                    :
+                    <Col>
+                      <h5>Loading...</h5>
+                    </Col>
+                  }
                 </Row>
               }
-              
             </Container>
           </Col>
-
         </Row>
-
-
-
-
-
-
-
         :
         <>
           {hasError ?
