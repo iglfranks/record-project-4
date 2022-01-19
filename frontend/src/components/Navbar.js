@@ -24,7 +24,6 @@ const Navbar = () => {
     history.push('/')
   }
 
-  console.log(userIsAuthenticated())
   return (
     <nav className='navbar navbar-dark bg-dark navbar-expand-lg sticky-top'>
       <div className='container-fluid mainNavDiv'>

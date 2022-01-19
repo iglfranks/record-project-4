@@ -45,7 +45,6 @@ const Register = () => {
       history.push('/login')
     } catch (err) {
       setErrors(err.response.data)
-      console.log(err.response.data)
     }
   }
 
@@ -54,7 +53,6 @@ const Register = () => {
   }
 
 
-  console.log(formData)
   return (
     <Container id='form-container'>
       <Form onSubmit={handleSubmit}>

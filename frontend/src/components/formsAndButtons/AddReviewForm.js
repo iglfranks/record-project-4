@@ -18,7 +18,6 @@ const AddReviewForm = () => {
 
   const userIsAuthenticated = () => {
     const payload = getPayload()
-    console.log('->>>> PAYLOAD', payload)
     if (!payload) return false
     return true
   }
@@ -32,7 +31,6 @@ const AddReviewForm = () => {
   const handleNumChange = (event) => {
     const newFormData = { ...formData, [event.target.name]: parseInt(event.target.value) }
     setFormData(newFormData)
-    console.log(newFormData)
   }
 
   const handleSubmit = async (event) => {
@@ -46,7 +44,6 @@ const AddReviewForm = () => {
       )
       window.location.reload()
     } catch (err) {
-      console.log(err.response.data)
       setHasError(true)
     }
   }

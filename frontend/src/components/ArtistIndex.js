@@ -12,22 +12,16 @@ const ArtistIndex = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios.get('/api/artists')
+        const { data } = await axios.get('/api/artists/')
         setArtists(data)
-        // console.log(records)
       } catch (err) {
-        console.log(err)
         setHasError(true)
-        // console.log(hasError)
       }
 
     }
     getData()
   }, [])
 
-
-  console.log(artists)
-  console.log(hasError)
   return (
     <>
       <Container fluid id='artist-index-hero' style={{

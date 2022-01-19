@@ -23,7 +23,6 @@ const Login = () => {
 
   const setItemToLocalStorage = (token) => {
     window.localStorage.setItem('token', token)
-    console.log('set')
   }
 
   const handleSubmit = async (event) => {
@@ -33,7 +32,6 @@ const Login = () => {
       setItemToLocalStorage(response.data.token)
       history.push('/')
     } catch (err) {
-      console.log(err.response)
       setHasError(true)
     }
   }

@@ -30,7 +30,6 @@ const SingleRecord = () => {
         setRecord(data)
       } catch (err) {
         setHasError(true)
-        console.log(err)
       }
     }
     getData()
@@ -39,14 +38,10 @@ const SingleRecord = () => {
   useEffect(() => {
 
     const setType = () => {
-      try {
-        if (record.is_vinyl_only === false) {
-          setRecordTypeInfo('Availible on digital and vinyl.')
-        } else {
-          setRecordTypeInfo('Availible on vinyl only.')
-        }
-      } catch (err) {
-        console.log(err)
+      if (record.is_vinyl_only === false) {
+        setRecordTypeInfo('Availible on digital and vinyl.')
+      } else {
+        setRecordTypeInfo('Availible on vinyl only.')
       }
     }
     setType()
@@ -61,9 +56,8 @@ const SingleRecord = () => {
     }
     setReviewSet()
 
-  }, [record]) 
+  }, [record])
 
-  console.log(hasError)
   return (
     <>
       <Container style={{ marginTop: '45px', marginBottom: '50px' }}>
@@ -75,7 +69,7 @@ const SingleRecord = () => {
                 src={record.image}
                 alt={`${record.title} Cover`}
                 id='record-single-pic'
-                style={{ 
+                style={{
                   border: 'solid rgba(0, 0, 0, 0.8.5) 10px',
                   borderRadius: '10px',
                 }}
@@ -94,7 +88,7 @@ const SingleRecord = () => {
                     alignItems: 'center',
                   }}>
                     <h4>{record.title}</h4>
-                    
+
                   </Col>
                 </div>
                 <div id='button-div'>
@@ -111,10 +105,10 @@ const SingleRecord = () => {
               <hr />
 
               <Col>
-                <Row style={{ 
+                <Row style={{
                   display: 'flex',
-                  flexDirection: 'column', 
-                  
+                  flexDirection: 'column',
+
                 }}>
                   <Col>
                     <p>{recordTypeInfo}</p>
@@ -129,7 +123,7 @@ const SingleRecord = () => {
                 <ReactPlayer
                   url={record.soundcloud_link}
                   height='200px'
-                  style={{ 
+                  style={{
                     border: 'solid rgba(231, 129, 13, 0.822) 5px',
                     borderRadius: '5px',
                   }}
@@ -138,14 +132,15 @@ const SingleRecord = () => {
 
             </Row>
           </Col>
-        </Row>     
+        </Row>
       </Container>
       <Container fluid style={{ padding: '0' }}>
-        <Container 
-          fluid 
-          className='d-flex' 
-          id='artists-and-reviews' 
-          style={{ padding: '50px', 
+        <Container
+          fluid
+          className='d-flex'
+          id='artists-and-reviews'
+          style={{
+            padding: '50px',
           }}>
           {artists ?
             <Row lg={3} sm={3} style={{ display: 'flex', flexDirection: 'column' }}>
@@ -161,7 +156,7 @@ const SingleRecord = () => {
                     >
                       <Card>
                         <Link to={`/artists/${art.id}`}>
-                          <Figure style={{ 
+                          <Figure style={{
                             margin: '0',
                             border: 'solid rgba(0, 0, 0, 0.38) 5px',
                             borderRadius: '5px',

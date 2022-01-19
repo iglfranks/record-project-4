@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react'
 import { Carousel, Row } from 'react-bootstrap'
 import axios from 'axios'
 import HomeCarousel from './HomeCarousel'
-import SoundCloud from 'react-custom-soundcloud'
 import ReactPlayer from 'react-player'
 
 const Home = () => {
@@ -18,10 +17,9 @@ const Home = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios.get('/api/records')
+        const { data } = await axios.get('/api/records/')
         setRecords(data)
       } catch (err) {
-        console.log(err)
         setHasError(true)
       }
     }
@@ -41,8 +39,6 @@ const Home = () => {
     set()
   }, [records])
 
-  console.log(records)
-  console.log(theFewRecords)
   return (
     <>
       <section className='home-hero'>
@@ -60,10 +56,6 @@ const Home = () => {
           </div>
 
           <div id='playlist-box'>
-            {/* <SoundCloud
-              playlist='1245424987'
-            /> */}
-
             <ReactPlayer
               url={'https://soundcloud.com/beltersmag/sets/belters-free-tunes'}
               height='450px'
@@ -114,12 +106,6 @@ const Home = () => {
         </div>
 
       </section>
-      {/* <div>
-        <SoundCloud
-          playlist='1245424987'
-        // theme='light'
-        />
-      </div> */}
     </>
   )
 

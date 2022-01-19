@@ -46,10 +46,9 @@ const AddRecord = () => {
   useEffect(() => {
     const getArtistList = async () => {
       try {
-        const { data } = await axios.get('/api/artists')
+        const { data } = await axios.get('/api/artists/')
         setArtistsList(data)
       } catch (err) {
-        console.log(err)
         setHasError(true)
 
       }
@@ -93,15 +92,13 @@ const AddRecord = () => {
       history.push('/records')
     } catch (err) {
       setErrors(err.response.data)
-      console.log(err.response.data)
     }
   }
 
   const handleShow = () => setShow(true)
   const handleClose = () => setShow(false)
 
-  console.log('has error->>>>', hasError)
-  console.log(formData)
+  console.log(hasError)
   return (
     <Container id='add-record-con'>
       <Form onSubmit={handleSubmit}>
@@ -199,7 +196,6 @@ const AddRecord = () => {
               onChange={(selected) => artistSelect(selected, 'artists')}
               options={selectOptions}
               isMulti
-              
             />
           </Form.Group>
           <Button variant='primary' onClick={handleShow} style={{ marginTop: '15px' }}>

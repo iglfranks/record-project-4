@@ -17,24 +17,19 @@ const ReviewList = ({ id, owner, rating, comment }) => {
     } else {
       setUserPayload(payload.sub)
     }
-    
+
   }, [])
 
   const handleDel = async (event) => {
-    try {
-      axios.delete(
-        `/api/reviews/${event.target.id}`,
-        {
-          headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
-        }
-      )
-      window.location.reload()
-    } catch (err) {
-      console.log(err)
-    }
+    axios.delete(
+      `/api/reviews/${event.target.id}/`,
+      {
+        headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
+      }
+    )
+    window.location.reload()
   }
 
-  console.log(userPayload)
   return (
     <>
       <Card.Header style={{
@@ -45,7 +40,7 @@ const ReviewList = ({ id, owner, rating, comment }) => {
           {owner.username}
         </div>
         <div>
-          {owner.id === userPayload ? <Button id={id} onClick={handleDel} style={{ 
+          {owner.id === userPayload ? <Button id={id} onClick={handleDel} style={{
             borderRadius: '500px',
             backgroundColor: 'darkred',
             border: 'solid darkred',

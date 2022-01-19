@@ -15,7 +15,7 @@ const RecordIndex = () => {
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios.get('/api/records')
+        const { data } = await axios.get('/api/records/')
         setRecords(data)
       } catch (err) {
         setHasError(true)

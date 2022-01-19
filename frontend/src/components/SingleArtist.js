@@ -20,11 +20,9 @@ const SingleArtist = () => {
     const getData = async () => {
       try {
         const { data } = await axios.get(`/api/artists/${id}`)
-        // console.log(data)
         setArtist(data)
       } catch (err) {
         setHasError(true)
-        console.log(err)
       }
     }
     getData()
@@ -33,13 +31,10 @@ const SingleArtist = () => {
   useEffect(() => {
     const addRecords = () => {
       setArtistRecords(artist.record_set)
-
     }
     addRecords()
   }, [artist])
 
-  console.log(hasError)
-  console.log(artistRecords)
   return (
     <>
       {artist ?

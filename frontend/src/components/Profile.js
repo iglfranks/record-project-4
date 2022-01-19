@@ -10,36 +10,24 @@ const Profile = () => {
 
   const history = useHistory()
 
-  const [userId, setUserId] = useState()
   const [userProfile, setUserProfile] = useState([])
   const [userFaves, setUserFaves] = useState([])
   const [hasError, setHasError] = useState(false)
   const [pp, setPp] = useState()
 
-  useEffect(() => {
-    const userIsAuthenticated = () => {
-      const payload = getPayload()
-      console.log('->>>> PAYLOAD', payload)
-      if (!payload) return false
-      setUserId(payload.sub)
-      console.log('sub_>>>', userId)
-      return true
-    }
-    userIsAuthenticated()
-  })
 
   useEffect(() => {
     const getData = async () => {
       try {
-        const { data } = await axios.get(`/api/auth/user/${userId}`)
+        const payload = getPayload()
+        const { data } = await axios.get(`/api/auth/user/${payload.sub}`)
         setUserProfile(data)
       } catch (err) {
-        console.log(err)
         setHasError(true)
       }
     }
     getData()
-  }, [userId])
+  }, [])
 
   useEffect(() => {
 
@@ -67,7 +55,7 @@ const Profile = () => {
   const handleDelete = async (event) => {
     try {
       axios.delete(
-        `/api/favourites/${event.target.id}`,
+        `/api/favourites/${event.target.id}/`,
         {
           headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
         }
@@ -78,7 +66,6 @@ const Profile = () => {
     }
   }
 
-  console.log(userFaves)
   return (
     <Container style={{
       width: '80%',
