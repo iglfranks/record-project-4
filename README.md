@@ -56,7 +56,46 @@ The main part of the planning process was creating an entity relationship diagra
 
 ## The Build: Back-End
 
-After this I began to build out the back-end using boilerplate Python/Django setup, installing the necessary files, such as Django REST Framework. Django’s inbuilt admin editor was extremely useful, allowing one to visualise adding items to the database much more easily and seeing how writing different relationships affects the models. TablePlus was used to view the data being added, as well as using Insomnia to test CRUD routes before creating the front-end. I created models for each different element, and used Django's 'include' feature to define routes for them within the API to make them accessible.
+After this I began to build out the back-end using boilerplate Python/Django setup, installing the necessary files, such as Django REST Framework. Django’s inbuilt admin editor was extremely useful, allowing one to visualise adding items to the database much more easily and seeing how writing different relationships affects the models. TablePlus was used to view the data being added, as well as using Insomnia to test CRUD routes before creating the front-end. I created models for each different element, and used Django's 'include' feature to define routes for them within the API to make them accessible. Model features, such as the record's genre, required a list of options that can be selected, so I used Django's 'CHOICES' feature to be able to define the list to integrate into the feature.
+
+```python
+class Record(models.Model):
+
+  RECORD_TYPES = (
+    ('Single', 'Single Release'),
+    ('EP', 'Extended Project'),
+    ('LP', 'Long Play'),
+    ('V/A', 'Artist Compilation')
+  )
+
+  RECORD_GENRES = (
+    ('UKG', 'UKG'),
+    ('Breaks', 'Breaks'),
+    ('Jungle', 'Jungle'),
+    ('House', 'House'),
+    ('Drum and Bass', 'Drum and Bass'),
+    ('Techno', 'Techno'),
+    ('Dubstep', 'Dubstep'),
+    ('Other', 'Other')
+  )
+
+  title = models.CharField(max_length=100, default=None)
+  image = models.CharField(max_length=700, default=None)
+  release_date = models.IntegerField(default=None)
+  label = models.CharField(max_length=100, default=None)
+  genre = models.CharField(max_length=100, choices=RECORD_GENRES, default=None)
+  type_of_record = models.CharField(max_length=100, choices=RECORD_TYPES, default=None)
+  is_vinyl_only = models.BooleanField(default=None)
+  link = models.CharField(max_length=200, default=None)
+  soundcloud_link = models.CharField(max_length=300, default=None)
+  artists = models.ManyToManyField("artists.Artist")
+  owner = models.ForeignKey(
+    "jwt_auth.User",
+    related_name = 'records',
+    on_delete = models.CASCADE
+  )
+
+```
 
 ```python
 from django.contrib import admin
@@ -86,7 +125,7 @@ The index page, displaying all of the records in the database, uses an API reque
       )
 })}
 ```
-The index page also displays a random soundcloud clip of one of the records, which is set to a piece of state as a random record from the index.
+The index page also displays a random soundcloud clip of one of the records using 'react-player', which is set to a piece of state as a random record from the index.
 
 ```javascript
 useEffect(() => {
@@ -96,6 +135,30 @@ useEffect(() => {
     }
     chooseRandom()
   }, [records])
+```
+
+I then built the individual record page to display the record's information, providing numerous external sources such as a purchase link and a soundcloud clip of the music using 'react-player'. The page shows the artists who are feature on the record, each providing a link to the individual artist page as well as having hover-activated triggers to display the artists name. I created a separate component for the displaying of the record's reviews, which also contains the functionality for authenticating a user in order to display the option to delete a review as long as they created it. I achieved this by acquiring the token from local storage and splitting it apart to reveal the payload. From this, the user's ID can be obtained to cross reference.
+
+```javascript
+useEffect(() => {
+    const payload = getPayload()
+    if (!payload) {
+      setUserPayload('')
+    } else {
+      setUserPayload(payload.sub)
+    }
+
+  }, [])
+
+  const handleDel = async (event) => {
+    axios.delete(
+      `/api/reviews/${event.target.id}/`,
+      {
+        headers: { Authorization: `Bearer ${getTokenFromLocalStorage()}` },
+      }
+    )
+    window.location.reload()
+  }
 ```
 
 The 'register' form submits the form data entered by the user, updated using functions called by changing/editing the fields. A user submitting their own profile picture to their profile is also possible, which I built using Cloudinary. This software uploads the image to the Cloudinary database and generates a URL that the request uses to send in the post request to the database.
@@ -254,8 +317,6 @@ const HomeCarousel = ({ id, image, title }) => {
 }
 export default HomeCarousel
 ```
-
-
 
 
 
