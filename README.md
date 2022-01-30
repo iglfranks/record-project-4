@@ -54,9 +54,51 @@ The main part of the planning process was creating an entity relationship diagra
 
 
 
-## The Build - Back-End
+## The Build: Back-End
 
-After this I began to build out the back-end using boilerplate Python/Django setup, installing the necessary files, such as Django REST Framework. Django’s inbuilt admin editor was extremely useful, allowing one to visualise adding items to the database much more easily and seeing how writing different relationships affects the models. TablePlus was used to view the data being added, as well as using Insomnia to test CRUD routes before creating the front-end. 
+After this I began to build out the back-end using boilerplate Python/Django setup, installing the necessary files, such as Django REST Framework. Django’s inbuilt admin editor was extremely useful, allowing one to visualise adding items to the database much more easily and seeing how writing different relationships affects the models. TablePlus was used to view the data being added, as well as using Insomnia to test CRUD routes before creating the front-end. I created models for each different element, and used Django's 'include' feature to define routes for them within the API to make them accessible.
+
+```python
+from django.contrib import admin
+from django.urls import path, include, re_path 
+from .views import index 
+
+urlpatterns = [
+    path('admin/', admin.site.urls),
+    path('api/records/', include('records.urls')),
+    path('api/artists/', include('artists.urls')),
+    path('api/auth/', include('jwt_auth.urls')),
+    path('api/reviews/', include('reviews.urls')),
+    path('api/favourites/', include('favourites.urls')),
+    re_path(r'^.*$', index)
+]
+```
+## The Build: Front-end
+
+The index page, displaying all of the records in the database, uses an API request to set the necessary information to pieces of state which are then read using dot notation to display. This is then mapped through ti display each record as an individual 'card', a refactored component containing the styling and information necessary. 
+
+```javascript
+{records.map(record => {
+      return (
+            <div key={record.id} className='col mb-3'>
+              <RecordCard key={record.id} {...record} />
+            </div>
+      )
+})}
+```
+The index page also displays a random soundcloud clip of one of the records, which is set to a piece of state as a random record from the index.
+
+```javascript
+useEffect(() => {
+    const chooseRandom = () => {
+      const num = Math.floor(Math.random() * records.length)
+      setRandomRec(records[num])
+    }
+    chooseRandom()
+  }, [records])
+```
+
+
 
 ## App user story
 
@@ -205,10 +247,6 @@ export default HomeCarousel
 
 After defining a new piece of state for the first 6 of the records in the index, I used a map function to create a carousel item for each one. It has also been refactored to contain a separate component with the circular styling of the record image as well as the caption. 
 
-## Future version/features
-
-Looking back over the project, I decided it would have been a better approach to have not created an artist page and instead have made the app as an E-Commerce service, allowing users to add records to their cart. This would have been a more challenging and learnful experience, as I would have had to learn another set of documentation and create an app that had a central idea more new to me. 
-
 ## Known bugs
 
 - Duplicates of the same favourite can be added.
@@ -223,6 +261,9 @@ Learning a new set of documentation with Bootstrap was extremely helpful as I ga
 
 A big challenge for me was time management. I feel if I had the understanding I have now, I would have created the project in a different way (as described above), allowing me to add more features and explore the possibilities of creating an app in a different approach. However, this project has therefore been a great learning experience and I look forward to creating another one of greater scope in the future.  
 
+## Future version/features
+
+Looking back over the project, I decided it would have been a better approach to have not created an artist page and instead have made the app as an E-Commerce service, allowing users to add records to their cart. This would have been a more challenging and learnful experience, as I would have had to learn another set of documentation and create an app that had a central idea more new to me.
 
 
 
