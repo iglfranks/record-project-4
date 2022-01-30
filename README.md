@@ -98,33 +98,19 @@ useEffect(() => {
   }, [records])
 ```
 
+The 'register' form submits the form data entered by the user, updated using functions called by changing/editing the fields. A user submitting their own profile picture to their profile is also possible, which I built using Cloudinary. This software uploads the image to the Cloudinary database and generates a URL that the request uses to send in the post request to the database.
 
+```javascript
+const handleUpload = async event => {
+    const data = new FormData()
+    data.append('file', event.target.files[0])
+    data.append('upload_preset', uploadPreset)
+    const response = await axios.post(uploadUrl, data)
+    handleImageUrl(response.data.url)
+  }
+```
 
-## App user story
-
-Without being logged into an account, a user can browse the database of records and artists. 
-
-![record and artist index](https://i.ibb.co/TYnWrrz/Screenshot-2022-01-24-at-14-36-37.png)
-
-From this page a user can browse to the individual page of a record to display information such as genre and its purchase link. The ‘react-player’ package is also utilised here, displaying the soundcloud link in the back-end of the record model. I also used Bootstrap’s ‘overlayer triggers’ to display artist names when hovering over the icons. Clicking on an artist page (from the record itself or the artist index page) leads to a page displaying their picture and a youtube video of a recent set. 
-
-![Record show page](https://i.ibb.co/F8SNQN9/Screenshot-2022-01-24-at-14-37-28.png)
-
-
-When a user is logged into their account, they can leave reviews for the record as well as having the ability to delete reviews they have created themselves. Authentication also gives the user ability to ‘favourite’ a record which will then appear on their profile page. 
-
-![profile page](https://i.ibb.co/5kP4GLh/Screenshot-2022-01-24-at-14-38-15.png)
-
-
-
-Their profile page displays the information they entered when creating an account (the profile picture shown is a default given when no picture is added), their favourite records, and any records the user has added themselves, an option which appears in the navbar only when a user is logged into their account. This allows the user to see their own collection separate from the larger number of items collated in the overall index. I used Cloudinary to be able to upload photos to a server to then be used and displayed on the page.
-
-
-![add record form](https://i.ibb.co/mbyGMXJ/Screenshot-2022-01-24-at-14-38-56.png)
-
-![add artist form](https://i.ibb.co/StdZtzS/Screenshot-2022-01-24-at-14-40-05.png)
-
-The add record page allows a user to add a new record to the index and become displayed on the record page, as well as choosing the artists who created it via a drop down list created with ‘react-select’. If the user wants to add a new artist, after clicking ‘add artist’ a modal appears with a new form, similarly adding an artist profile to the artist index. This was also using bootstrap’s inbuilt code, with the ‘Modal’ tags used to set the different aspects.
+The add record page, availible from the Navbar only when a user is logged in, allows a user to add a new record to the index and become displayed on the record page, as well as choosing the artists who created it via a drop down list created with ‘react-select’. I created the option to be able to also add a new artist by  clicking ‘add artist’ a modal appears with a new form, similarly adding an artist profile to the artist index. This was built using bootstrap’s inbuilt code, with the ‘Modal’ tags used to set the different aspects.
 
 ```javascript
 <>
@@ -173,7 +159,35 @@ The add record page allows a user to add a new record to the index and become di
         </Form>
       </Modal.Body>
     </>
-```
+``` 
+
+
+
+## App user story
+
+Without being logged into an account, a user can browse the database of records and artists. 
+
+![record and artist index](https://i.ibb.co/TYnWrrz/Screenshot-2022-01-24-at-14-36-37.png)
+
+From this page a user can browse to the individual page of a record to display information such as genre and its purchase link. The ‘react-player’ package is also utilised here, displaying the soundcloud link in the back-end of the record model. I also used Bootstrap’s ‘overlayer triggers’ to display artist names when hovering over the icons. Clicking on an artist page (from the record itself or the artist index page) leads to a page displaying their picture and a youtube video of a recent set. 
+
+![Record show page](https://i.ibb.co/F8SNQN9/Screenshot-2022-01-24-at-14-37-28.png)
+
+
+When a user is logged into their account, they can leave reviews for the record as well as having the ability to delete reviews they have created themselves. Authentication also gives the user ability to ‘favourite’ a record which will then appear on their profile page. 
+
+![profile page](https://i.ibb.co/5kP4GLh/Screenshot-2022-01-24-at-14-38-15.png)
+
+
+
+Their profile page displays the information they entered when creating an account (the profile picture shown is a default given when no picture is added), their favourite records, and any records the user has added themselves, an option which appears in the navbar only when a user is logged into their account. This allows the user to see their own collection separate from the larger number of items collated in the overall index. I used Cloudinary to be able to upload photos to a server to then be used and displayed on the page.
+
+
+![add record form](https://i.ibb.co/mbyGMXJ/Screenshot-2022-01-24-at-14-38-56.png)
+
+![add artist form](https://i.ibb.co/StdZtzS/Screenshot-2022-01-24-at-14-40-05.png)
+
+
 
 ## Featured section of code: using Bootstrap
 
