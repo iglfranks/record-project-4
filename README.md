@@ -114,7 +114,7 @@ urlpatterns = [
 ```
 ## The Build: Front-end
 
-The index page, displaying all of the records in the database, uses an API request to set the necessary information to pieces of state which are then read using dot notation to display. This is then mapped through ti display each record as an individual 'card', a refactored component containing the styling and information necessary. 
+The index page, displaying all of the records in the database, uses an API request to set the necessary information to pieces of state which are then read using dot notation to display. This is then mapped through to display each record as an individual 'card', a refactored component containing the styling and information necessary. 
 
 ```javascript
 {records.map(record => {
@@ -137,7 +137,7 @@ useEffect(() => {
   }, [records])
 ```
 
-I then built the individual record page to display the record's information, providing numerous external sources such as a purchase link and a soundcloud clip of the music using 'react-player'. The page shows the artists who are feature on the record, each providing a link to the individual artist page as well as having hover-activated triggers to display the artists name. I created a separate component for the displaying of the record's reviews, which also contains the functionality for authenticating a user in order to display the option to delete a review as long as they created it. I achieved this by acquiring the token from local storage and splitting it apart to reveal the payload. From this, the user's ID can be obtained to cross reference.
+I then built the individual record page to display the record's information, providing numerous external sources such as a purchase link and a soundcloud clip of the music using 'react-player'. The page shows the artists who are featured on the record, each providing a link to the individual artist page as well as having hover-activated triggers to display the artists name. I created a separate component for the displaying of the record's reviews, which also contains the functionality for authenticating a user in order to display the option to delete a review as long as they created it. I achieved this by acquiring the token from local storage and splitting it apart to reveal the payload. From this, the user's ID can be obtained to cross reference.
 
 ```javascript
 useEffect(() => {
